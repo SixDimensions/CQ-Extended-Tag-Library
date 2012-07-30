@@ -34,11 +34,16 @@ public class ListChildrenTag extends TagSupport {
 	 */
 	@Override
 	public int doEndTag() {
-		ListChildrenTag.log.trace("doEndTag");
-		IterableIterator<Resource> children = new IterableIterator<Resource>(
-				this.resource.listChildren());
-		this.pageContext.setAttribute(this.var, children,
-				PageContext.REQUEST_SCOPE);
+		log.trace("doEndTag");
+		if (this.resource != null) {
+			log.debug("Listing children of: " + this.resource.getPath());
+			IterableIterator<Resource> children = new IterableIterator<Resource>(
+					this.resource.listChildren());
+			this.pageContext.setAttribute(this.var, children,
+					PageContext.REQUEST_SCOPE);
+		} else {
+			log.debug("No/null resource specified");
+		}
 		return Tag.EVAL_PAGE;
 	}
 

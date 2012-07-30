@@ -22,7 +22,7 @@ public class SlingFunctions {
 	 * @return true if there is a child at the specified path, false otherwise
 	 */
 	public static boolean hasChild(Resource resource, String path) {
-		SlingFunctions.log.trace("hasChild");
+		log.trace("hasChild");
 		return resource.getChild(path) != null;
 	}
 }

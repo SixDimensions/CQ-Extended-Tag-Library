@@ -32,14 +32,14 @@ public class GetResourceTag extends TagSupport {
 	 */
 	@Override
 	public int doEndTag() {
-		GetResourceTag.log.trace("doEndTag");
+		log.trace("doEndTag");
 
-		GetResourceTag.log.debug("Retrieving resource at path");
+		log.debug("Retrieving resource at path");
 		SlingHttpServletRequest slingRequest = (SlingHttpServletRequest) this.pageContext
 				.getRequest();
 		Resource resource = slingRequest.getResourceResolver().getResource(
 				this.path);
-		GetResourceTag.log.debug("Retrieved resource: "
+		log.debug("Retrieved resource: "
 				+ (resource != null ? resource.getPath() : "null"));
 		this.pageContext.setAttribute(this.var, resource,
 				PageContext.REQUEST_SCOPE);

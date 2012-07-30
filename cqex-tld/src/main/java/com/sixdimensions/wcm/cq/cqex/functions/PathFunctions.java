@@ -20,14 +20,14 @@ public class PathFunctions {
 	 * </ul>
 	 */
 	public static String toLink(String path) {
-		PathFunctions.log.trace("toLink");
+		log.trace("toLink");
 
 		if (path == null) {
-			PathFunctions.log.debug("Path is null");
+			log.debug("Path is null");
 			return null;
 		}
 
-		PathFunctions.log.trace("Converting path: " + path + " to link");
+		log.trace("Converting path: " + path + " to link");
 		String link = path;
 		if (!link.startsWith("http") && !link.startsWith("mailto")
 				&& !link.startsWith("#") && !link.contains(".")) {
