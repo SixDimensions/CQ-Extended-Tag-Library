@@ -11,6 +11,11 @@
 	<artifactId>cqex-tld</artifactId>
 	<name>CQ Extended Tag Library</name>
 
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -24,11 +29,13 @@
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.3.7</version>
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-scr-plugin</artifactId>
+				<version>1.7.4</version>
 				<executions>
 					<execution>
 						<id>generate-scr-scrdescriptor</id>
