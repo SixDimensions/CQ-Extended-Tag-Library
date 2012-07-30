@@ -36,7 +36,7 @@ public class GetPropertiesTag extends TagSupport {
 	 */
 	@Override
 	public int doEndTag() throws JspException {
-		GetPropertiesTag.log.trace("doEndTag");
+		log.trace("doEndTag");
 
 		Map<?, ?> properties = null;
 		SlingHttpServletRequest request = (SlingHttpServletRequest) this.pageContext
@@ -44,21 +44,17 @@ public class GetPropertiesTag extends TagSupport {
 
 		Resource rsrc = null;
 		if ((this.resource != null) && !StringUtils.isEmpty(this.path)) {
-			GetPropertiesTag.log.trace("Finding resource at relative path: "
-					+ this.path);
+			log.trace("Finding resource at relative path: " + this.path);
 			rsrc = request.getResourceResolver().getResource(
 					request.getResource(), this.path);
 		} else if ((this.resource != null) && StringUtils.isEmpty(this.path)) {
-			GetPropertiesTag.log.trace("Using resource: "
-					+ this.resource.getPath());
+			log.trace("Using resource: " + this.resource.getPath());
 			rsrc = this.resource;
 		} else if (this.path.startsWith("/")) {
-			GetPropertiesTag.log.trace("Finding resource at absolute path: "
-					+ this.path);
+			log.trace("Finding resource at absolute path: " + this.path);
 			rsrc = request.getResourceResolver().getResource(this.path);
 		} else {
-			GetPropertiesTag.log
-					.warn("Unable to retrieve resource, neither path nor resource specified.");
+			log.warn("Unable to retrieve resource, neither path nor resource specified.");
 		}
 
 		if ((rsrc != null)
@@ -67,8 +63,7 @@ public class GetPropertiesTag extends TagSupport {
 			properties = rsrc.adaptTo(ValueMap.class);
 			this.pageContext.setAttribute(this.var, properties);
 		} else {
-			GetPropertiesTag.log.debug("Resource not found at path: "
-					+ this.path);
+			log.debug("Resource not found at path: " + this.path);
 		}
 
 		return Tag.EVAL_PAGE;
