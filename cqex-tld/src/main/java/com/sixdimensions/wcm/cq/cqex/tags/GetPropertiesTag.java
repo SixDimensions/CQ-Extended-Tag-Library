@@ -7,8 +7,10 @@ import java.util.Map;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
+import javax.servlet.jsp.tagext.Tag;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
@@ -23,7 +25,8 @@ import org.slf4j.LoggerFactory;
  */
 public class GetPropertiesTag extends TagSupport {
 	private static final long serialVersionUID = 2906794811653608479L;
-	private Logger log = LoggerFactory.getLogger(GetPropertiesTag.class);
+	private static final Logger log = LoggerFactory
+			.getLogger(GetPropertiesTag.class);
 	private String path;
 	private String var;
 	private Resource resource;
@@ -31,35 +34,44 @@ public class GetPropertiesTag extends TagSupport {
 	/**
 	 * @InheretDoc
 	 */
+	@Override
 	public int doEndTag() throws JspException {
-		log.trace("doEndTag");
+		GetPropertiesTag.log.trace("doEndTag");
 
 		Map<?, ?> properties = null;
-		SlingHttpServletRequest request = (SlingHttpServletRequest) pageContext
+		SlingHttpServletRequest request = (SlingHttpServletRequest) this.pageContext
 				.getRequest();
 
 		Resource rsrc = null;
-		if (resource != null) {
-			log.trace("Using resource: " + resource.getPath());
-			rsrc = resource;
-		} else if (path.startsWith("/")) {
-			log.trace("Finding resource at absolute path: " + path);
-			rsrc = request.getResourceResolver().getResource(path);
-		} else {
-			log.trace("Finding resource at relative path: " + path);
+		if ((this.resource != null) && !StringUtils.isEmpty(this.path)) {
+			GetPropertiesTag.log.trace("Finding resource at relative path: "
+					+ this.path);
 			rsrc = request.getResourceResolver().getResource(
-					request.getResource(), path);
+					request.getResource(), this.path);
+		} else if ((this.resource != null) && StringUtils.isEmpty(this.path)) {
+			GetPropertiesTag.log.trace("Using resource: "
+					+ this.resource.getPath());
+			rsrc = this.resource;
+		} else if (this.path.startsWith("/")) {
+			GetPropertiesTag.log.trace("Finding resource at absolute path: "
+					+ this.path);
+			rsrc = request.getResourceResolver().getResource(this.path);
+		} else {
+			GetPropertiesTag.log
+					.warn("Unable to retrieve resource, neither path nor resource specified.");
 		}
-		if (rsrc != null
+
+		if ((rsrc != null)
 				&& !rsrc.getResourceType().equals(
 						Resource.RESOURCE_TYPE_NON_EXISTING)) {
 			properties = rsrc.adaptTo(ValueMap.class);
-			pageContext.setAttribute(var, properties);
+			this.pageContext.setAttribute(this.var, properties);
 		} else {
-			log.debug("Resource not found at path: " + path);
+			GetPropertiesTag.log.debug("Resource not found at path: "
+					+ this.path);
 		}
 
-		return TagSupport.EVAL_PAGE;
+		return Tag.EVAL_PAGE;
 	}
 
 	/**
