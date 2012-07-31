@@ -29,7 +29,7 @@ public class GetResourceTag extends TagSupport {
 	/**
 	 * The absolute path of the resource to retrieve
 	 */
-	@Attribute
+	@Attribute(required = true)
 	private String path;
 
 	/**
