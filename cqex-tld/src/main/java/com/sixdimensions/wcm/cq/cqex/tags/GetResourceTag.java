@@ -4,13 +4,15 @@
 package com.sixdimensions.wcm.cq.cqex.tags;
 
 import javax.servlet.jsp.PageContext;
-import javax.servlet.jsp.tagext.Tag;
 import javax.servlet.jsp.tagext.TagSupport;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tldgen.annotations.Attribute;
+import org.tldgen.annotations.BodyContent;
+import org.tldgen.annotations.Tag;
 
 /**
  * Retrieves the resource at the specified path and makes it available as a
@@ -18,11 +20,22 @@ import org.slf4j.LoggerFactory;
  * 
  * @author dklco
  */
+@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getResource var=\"resource\" path=\"/content/mysite\" />")
 public class GetResourceTag extends TagSupport {
 	private static final long serialVersionUID = 5861756752614447760L;
 	private static final Logger log = LoggerFactory
 			.getLogger(GetResourceTag.class);
+
+	/**
+	 * The absolute path of the resource to retrieve
+	 */
+	@Attribute
 	private String path;
+
+	/**
+	 * The page context variable in which to save the resource
+	 */
+	@Attribute
 	private String var = "resource";
 
 	/*
@@ -43,7 +56,7 @@ public class GetResourceTag extends TagSupport {
 				+ (resource != null ? resource.getPath() : "null"));
 		this.pageContext.setAttribute(this.var, resource,
 				PageContext.REQUEST_SCOPE);
-		return Tag.EVAL_PAGE;
+		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
 
 	public void setPath(String path) {

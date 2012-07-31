@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
-import javax.servlet.jsp.tagext.Tag;
 import javax.servlet.jsp.tagext.TagSupport;
 
 import org.apache.commons.lang.StringUtils;
@@ -16,6 +15,9 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tldgen.annotations.Attribute;
+import org.tldgen.annotations.BodyContent;
+import org.tldgen.annotations.Tag;
 
 /**
  * Tag that retrieves the properties from the resource at a path and saves them
@@ -23,12 +25,32 @@ import org.slf4j.LoggerFactory;
  * 
  * @author dklco
  */
+@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getProperties var=\"properties\" path=\"jcr:content/myNode\" resource=\"${resource}\" />")
 public class GetPropertiesTag extends TagSupport {
 	private static final long serialVersionUID = 2906794811653608479L;
 	private static final Logger log = LoggerFactory
 			.getLogger(GetPropertiesTag.class);
+
+	/**
+	 * The path of the resource to retrieve as a ValueMap. If a resource is
+	 * specified, this is treated as a relative path, if there is no resource,
+	 * it is treated as an absolute path.
+	 */
+	@Attribute
 	private String path;
+
+	/**
+	 * The page context variable in which to save the resource
+	 */
+	@Attribute
 	private String var;
+
+	/**
+	 * The resource to use as a base for retrieving the properties. If this and
+	 * path are specified the properties at the sub-resource specified by the
+	 * path will be retrieved.
+	 */
+	@Attribute
 	private Resource resource;
 
 	/**
@@ -66,7 +88,7 @@ public class GetPropertiesTag extends TagSupport {
 			log.debug("Resource not found at path: " + this.path);
 		}
 
-		return Tag.EVAL_PAGE;
+		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
 
 	/**
