@@ -42,7 +42,7 @@ public class GetPropertiesTag extends TagSupport {
 	/**
 	 * The page context variable in which to save the resource
 	 */
-	@Attribute
+	@Attribute(required = true)
 	private String var;
 
 	/**
