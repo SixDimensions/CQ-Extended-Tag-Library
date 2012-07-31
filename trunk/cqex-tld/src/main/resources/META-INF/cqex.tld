@@ -50,6 +50,38 @@
         <example>&amp;lt;cqex:getProperties var="properties" path="jcr:content/myNode" resource="${resource}" /&gt;</example>
     </tag>
     <tag>
+        <description>Tag for retrieving property from a ValueMap, allowing the specification of a
+            default value.
+        </description>
+        <name>getProperty</name>
+        <tag-class>com.sixdimensions.wcm.cq.cqex.tags.GetPropertyTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>The key of the attribute to retrieve</description>
+            <name>key</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The ValueMap from which to retrieve the values</description>
+            <name>properties</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The page context variable in which to save the resource</description>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The default value. If no value is retrieved this value will be returned.</description>
+            <name>defaultValue</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <example>&amp;lt;cqex:getProperty var="prop" key="myProp" properties="${properties}" defaultValue="Default"/&gt;</example>
+    </tag>
+    <tag>
         <description>Retrieves the resource at the specified path and makes it available as a
             Sling Resource.
         </description>
@@ -90,6 +122,19 @@
         </attribute>
         <example>&amp;lt;cqex:listChildren var="resources" resource="${resource}" /&gt;</example>
     </tag>
+    <function>
+        <description>Retrieves a property from the ValueMap allowing for default values.
+            * org.apache.sling.api.resource.ValueMap properties: the ValueMap from which to retrieve the value
+            * java.lang.String key: the key for the value to retrieve
+            * java.lang.Object defaultValue: the default value, if no value is retrieved, this value is
+            returned
+            Return: 
+        </description>
+        <name>getProperty</name>
+        <function-class>com.sixdimensions.wcm.cq.cqex.functions.SlingFunctions</function-class>
+        <function-signature>java.lang.Object getProperty(org.apache.sling.api.resource.ValueMap, java.lang.String, java.lang.Object)</function-signature>
+        <example>${cqex:getProperty(properties, key, defaultValue)}</example>
+    </function>
     <function>
         <description>Checks to see if there is a child resource at the specified path.
             * org.apache.sling.api.resource.Resource resource: the resource to check the children thereof
