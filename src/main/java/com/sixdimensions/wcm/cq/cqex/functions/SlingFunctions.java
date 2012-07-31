@@ -6,6 +6,7 @@ package com.sixdimensions.wcm.cq.cqex.functions;
 import org.apache.sling.api.resource.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tldgen.annotations.Function;
 
 public class SlingFunctions {
 
@@ -21,6 +22,7 @@ public class SlingFunctions {
 	 *            the path of the child to check
 	 * @return true if there is a child at the specified path, false otherwise
 	 */
+	@Function(example = "${cqex:hasChild(resource,path)}")
 	public static boolean hasChild(Resource resource, String path) {
 		log.trace("hasChild");
 		return resource.getChild(path) != null;
