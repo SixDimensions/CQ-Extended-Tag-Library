@@ -10,6 +10,29 @@
 	<groupId>com.sixdimensions.wcm.cq</groupId>
 	<artifactId>cqex-tld</artifactId>
 	<name>CQ Extended Tag Library</name>
+	<url>http://cqex-tld.6dlabs.com</url>
+	<inceptionYear>2012</inceptionYear>
+	<organization>
+		<name>Six Dimensions</name>
+		<url>http://www.sixdimensions.com</url>
+	</organization>
+	<developers>
+		<developer>
+			<name>Dan Klco</name>
+			<email>dan.klco@sixdimensions.com</email>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+		</license>
+	</licenses>
+	<scm>
+		<url>http://sourcecontrol.6dlabs.com/svn/sandbox/cqex-tld/trunk/cqex-tld</url>
+		<developerConnection>scm:svn:http://sourcecontrol.6dlabs.com/svn/sandbox/cqex-tld/trunk/cqex-tld</developerConnection>
+		<connection>scm:svn:http://sourcecontrol.6dlabs.com/svn/sandbox/cqex-tld/trunk/cqex-tld</connection>
+	</scm>
 
 
 	<properties>
@@ -77,17 +100,18 @@
 					<show>private</show>
 					<additionalparam>
 						-displayName 'CQ Extended Taglib'
-						-uri http://www.6dlabs.com/cqex/1.0
+						-uri
+						http://www.6dlabs.com/cqex/1.0
 						-name cqex
-						-htmlFolder ${basedir}/target/docs
-						-tldFolder ${basedir}/src/main/resources/META-INF
+						-htmlFolder
+						${basedir}/target/site/doc
+						-tldFolder
+						${basedir}/src/main/resources/META-INF
 						-license APACHE
-						-charset UTF-8
+						-charset
+						UTF-8
 						-doctitle 'CQ Extended Taglibs'
 					</additionalparam>
-					<bottom>Copyright &#169; 2012 Six Dimensions. All Rights Reserved.</bottom>
-					<doctitle>CQ Extended Taglibs ${project.version}</doctitle>
-					<windowtitle>CQ Extended Taglibs ${project.version}</windowtitle>
 					<useStandardDocletOptions>true</useStandardDocletOptions>
 					<author>false</author>
 					<encoding>utf-8</encoding>
@@ -100,6 +124,91 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.9.1</version>
+				<executions>
+					<execution>
+						<id>checkstyle</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>checkstyle</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<configLocation>${basedir}/checkstyle.xml</configLocation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.4.0</version>
+				<executions>
+					<execution>
+						<id>findbugs</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>findbugs</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<findbugsXmlOutput>true</findbugsXmlOutput>
+					<findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+					<xmlOutput>true</xmlOutput>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.0</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.wagon</groupId>
+						<artifactId>wagon-ssh</artifactId>
+						<version>1.0-beta-7</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<reportPlugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-changes-plugin</artifactId>
+							<version>2.6</version>
+							<reportSets>
+								<reportSet>
+									<reports>
+										<report>changes-report</report>
+									</reports>
+								</reportSet>
+							</reportSets>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-project-info-reports-plugin</artifactId>
+							<version>2.2</version>
+							<reportSets>
+								<reportSet>
+									<reports>
+										<report>index</report>
+										<report>help</report>
+										<report>summary</report>
+										<report>license</report>
+										<report>dependencies</report>
+									</reports>
+								</reportSet>
+							</reportSets>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-javadoc-plugin</artifactId>
+							<version>2.6.1</version>
+						</plugin>
+					</reportPlugins>
+				</configuration>
 			</plugin>
 		</plugins>
 		<pluginManagement>
