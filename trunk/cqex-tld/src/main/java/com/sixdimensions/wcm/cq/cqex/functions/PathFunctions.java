@@ -6,6 +6,7 @@ package com.sixdimensions.wcm.cq.cqex.functions;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tldgen.annotations.Function;
 
 public class PathFunctions {
 	private static final Logger log = LoggerFactory
@@ -19,6 +20,7 @@ public class PathFunctions {
 	 * <li>otherwise append '.html'</li>
 	 * </ul>
 	 */
+	@Function(example = "${cqex:toLink(path)}")
 	public static String toLink(String path) {
 		log.trace("toLink");
 
