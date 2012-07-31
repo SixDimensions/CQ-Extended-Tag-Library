@@ -80,9 +80,13 @@
 						-uri http://www.6dlabs.com/cqex/1.0
 						-name cqex
 						-htmlFolder ${basedir}/target/docs
-						-tldFolder ${basedir}/target/classes/META-INF
+						-tldFolder ${basedir}/src/main/resources/META-INF
 						-license APACHE
+						-charset UTF-8
 					</additionalparam>
+					<bottom>Copyright &#169; 2012 Six Dimensions. All Rights Reserved.</bottom>
+					<doctitle>CQ Extended Taglibs ${project.version}</doctitle>
+					<windowtitle>CQ Extended Taglibs ${project.version}</windowtitle>
 					<useStandardDocletOptions>true</useStandardDocletOptions>
 					<author>false</author>
 					<encoding>utf-8</encoding>
