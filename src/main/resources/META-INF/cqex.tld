@@ -26,6 +26,12 @@
         <tag-class>com.sixdimensions.wcm.cq.cqex.tags.GetPropertiesTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
+            <description>The page context variable in which to save the resource</description>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
             <description>The path of the resource to retrieve as a ValueMap. If a resource is
                 specified, this is treated as a relative path, if there is no resource,
                 it is treated as an absolute path.
@@ -41,11 +47,6 @@
             <name>resource</name>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
-        <attribute>
-            <description>The page context variable in which to save the resource</description>
-            <name>var</name>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
         <example>&amp;lt;cqex:getProperties var="properties" path="jcr:content/myNode" resource="${resource}" /&gt;</example>
     </tag>
     <tag>
@@ -58,6 +59,7 @@
         <attribute>
             <description>The absolute path of the resource to retrieve</description>
             <name>path</name>
+            <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
@@ -78,6 +80,7 @@
         <attribute>
             <description>The resource to list the children of, required but may be null</description>
             <name>resource</name>
+            <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>

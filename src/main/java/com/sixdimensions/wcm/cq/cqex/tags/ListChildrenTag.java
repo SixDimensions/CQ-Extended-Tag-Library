@@ -32,7 +32,7 @@ public class ListChildrenTag extends TagSupport {
 	/**
 	 * The resource to list the children of, required but may be null
 	 */
-	@Attribute
+	@Attribute(required = true)
 	private Resource resource;
 	/**
 	 * The page context variable in which to save the children
