@@ -40,7 +40,7 @@ public class GetPropertiesTag extends TagSupport {
 	private String path;
 
 	/**
-	 * The page context variable in which to save the resource
+	 * The page context variable in which to save the valuemap
 	 */
 	@Attribute(required = true)
 	private String var;
