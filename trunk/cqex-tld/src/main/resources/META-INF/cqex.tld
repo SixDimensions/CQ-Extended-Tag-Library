@@ -123,6 +123,37 @@
         <example>&amp;lt;cqex:listChildren var="resources" resource="${resource}" /&gt;</example>
     </tag>
     <function>
+        <description>Gets the navigation title, falling back on the following methods:
+            &lt;ul&gt;
+            &lt;li&gt;getNavigationTitle&lt;/li&gt;
+            &lt;li&gt;getPageTitle&lt;/li&gt;
+            &lt;li&gt;getTitle&lt;/li&gt;
+            &lt;li&gt;getName&lt;/li&gt;
+            &lt;/ul&gt;
+            * com.day.cq.wcm.api.Page page: the page for which to get the title
+            Return: the title to display in the navigation for the page
+        </description>
+        <name>getNavTitle</name>
+        <function-class>com.sixdimensions.wcm.cq.cqex.functions.CQFunctions</function-class>
+        <function-signature>java.lang.String getNavTitle(com.day.cq.wcm.api.Page)</function-signature>
+        <example>${cqex:getNavTitle(page)}</example>
+    </function>
+    <function>
+        <description>Gets the page title, falling back on the following methods:
+            &lt;ul&gt;
+            &lt;li&gt;getPageTitle&lt;/li&gt;
+            &lt;li&gt;getTitle&lt;/li&gt;
+            &lt;li&gt;getName&lt;/li&gt;
+            &lt;/ul&gt;
+            * com.day.cq.wcm.api.Page page: the page for which to get the title
+            Return: the title to display in the navigation for the page
+        </description>
+        <name>getPageTitle</name>
+        <function-class>com.sixdimensions.wcm.cq.cqex.functions.CQFunctions</function-class>
+        <function-signature>java.lang.String getPageTitle(com.day.cq.wcm.api.Page)</function-signature>
+        <example>${cqex:getPageTitle(page)}</example>
+    </function>
+    <function>
         <description>Retrieves a property from the ValueMap allowing for default values.
             * org.apache.sling.api.resource.ValueMap properties: the ValueMap from which to retrieve the value
             * java.lang.String key: the key for the value to retrieve
