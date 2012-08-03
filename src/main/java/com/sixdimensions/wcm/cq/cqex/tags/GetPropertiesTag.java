@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
-import javax.servlet.jsp.tagext.TagSupport;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -26,7 +25,7 @@ import org.tldgen.annotations.Tag;
  * @author dklco
  */
 @Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getProperties var=\"properties\" path=\"jcr:content/myNode\" resource=\"${resource}\" />")
-public class GetPropertiesTag extends TagSupport {
+public class GetPropertiesTag extends AttributeSettingTag {
 	private static final long serialVersionUID = 2906794811653608479L;
 	private static final Logger log = LoggerFactory
 			.getLogger(GetPropertiesTag.class);
@@ -38,12 +37,6 @@ public class GetPropertiesTag extends TagSupport {
 	 */
 	@Attribute
 	private String path;
-
-	/**
-	 * The page context variable in which to save the valuemap
-	 */
-	@Attribute(required = true)
-	private String var;
 
 	/**
 	 * The resource to use as a base for retrieving the properties. If this and
@@ -83,7 +76,7 @@ public class GetPropertiesTag extends TagSupport {
 				&& !rsrc.getResourceType().equals(
 						Resource.RESOURCE_TYPE_NON_EXISTING)) {
 			properties = rsrc.adaptTo(ValueMap.class);
-			this.pageContext.setAttribute(this.var, properties);
+			this.setAttribute(this.var, properties);
 		} else {
 			log.debug("Resource not found at path: " + this.path);
 		}
@@ -111,17 +104,5 @@ public class GetPropertiesTag extends TagSupport {
 	 */
 	public void setResource(Resource resource) throws JspTagException {
 		this.resource = resource;
-	}
-
-	/**
-	 * Set the page context variable to which to save the valuemap of
-	 * properties.
-	 * 
-	 * @param var
-	 *            the name of the page context variable
-	 * @throws JspTagException
-	 */
-	public void setVar(String var) throws JspTagException {
-		this.var = var;
 	}
 }

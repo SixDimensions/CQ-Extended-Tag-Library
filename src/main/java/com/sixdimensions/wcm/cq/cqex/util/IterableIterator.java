@@ -20,21 +20,41 @@ public class IterableIterator<E> implements Iterator<E>, Iterable<E> {
 		this.data = data;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.Iterator#hasNext()
+	 */
 	@Override
 	public boolean hasNext() {
 		return this.data.hasNext();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Iterable#iterator()
+	 */
 	@Override
 	public Iterator<E> iterator() {
 		return this.data;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.Iterator#next()
+	 */
 	@Override
 	public E next() {
 		return this.data.next();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.Iterator#remove()
+	 */
 	@Override
 	public void remove() {
 		this.data.remove();
