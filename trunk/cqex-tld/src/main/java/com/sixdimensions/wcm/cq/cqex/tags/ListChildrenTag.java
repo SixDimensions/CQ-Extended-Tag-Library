@@ -3,9 +3,6 @@
  */
 package com.sixdimensions.wcm.cq.cqex.tags;
 
-import javax.servlet.jsp.PageContext;
-import javax.servlet.jsp.tagext.TagSupport;
-
 import org.apache.sling.api.resource.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,10 +20,9 @@ import com.sixdimensions.wcm.cq.cqex.util.IterableIterator;
  * @author dklco
  */
 @Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:listChildren var=\"resources\" resource=\"${resource}\" />")
-public class ListChildrenTag extends TagSupport {
+public class ListChildrenTag extends AttributeSettingTag {
 	private static final Logger log = LoggerFactory
 			.getLogger(ListChildrenTag.class);
-
 	private static final long serialVersionUID = 5861756752614447760L;
 
 	/**
@@ -34,11 +30,12 @@ public class ListChildrenTag extends TagSupport {
 	 */
 	@Attribute(required = true)
 	private Resource resource;
+
 	/**
 	 * The page context variable in which to save the children
 	 */
 	@Attribute
-	private String var = "resources";
+	private final String var = "resources";
 
 	/*
 	 * (non-Javadoc)
@@ -52,27 +49,23 @@ public class ListChildrenTag extends TagSupport {
 			log.debug("Listing children of: " + this.resource.getPath());
 			IterableIterator<Resource> children = new IterableIterator<Resource>(
 					this.resource.listChildren());
-			this.pageContext.setAttribute(this.var, children,
-					PageContext.REQUEST_SCOPE);
+			this.setAttribute(this.var, children);
 		} else {
 			log.debug("No/null resource specified");
 		}
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
 
+	/**
+	 * Get the current resource.
+	 * 
+	 * @return the current resource
+	 */
 	public Resource getResource() {
 		return this.resource;
 	}
 
-	public String getVar() {
-		return this.var;
-	}
-
 	public void setResource(Resource resource) {
 		this.resource = resource;
-	}
-
-	public void setVar(String var) {
-		this.var = var;
 	}
 }
