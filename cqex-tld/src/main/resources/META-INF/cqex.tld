@@ -19,6 +19,33 @@
     <short-name>cqex</short-name>
     <uri>http://www.6dlabs.com/cqex/1.0</uri>
     <tag>
+        <description>Tag that retrieves the page at or containing the specified path.</description>
+        <name>getContainingPage</name>
+        <tag-class>com.sixdimensions.wcm.cq.cqex.tags.GetContainingPageTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>The page context variable to save the value</description>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The absolute path of the page to retrieve or to a resource under the
+                page.
+            </description>
+            <name>path</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The scope in which to save the attribute. May be either one of page or
+                request.
+            </description>
+            <name>scope</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <example>&amp;lt;cqex:getContainingPage var="page" path="/content/geometrixxx/en/jcr:content" /&gt;</example>
+    </tag>
+    <tag>
         <description>Tag that retrieves the properties from the resource at a path and saves them
             into a page context variable as a ValueMap.
         </description>
@@ -26,7 +53,7 @@
         <tag-class>com.sixdimensions.wcm.cq.cqex.tags.GetPropertiesTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
-            <description>The page context variable in which to save the resource</description>
+            <description>The page context variable to save the value</description>
             <name>var</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
@@ -45,6 +72,13 @@
                 path will be retrieved.
             </description>
             <name>resource</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The scope in which to save the attribute. May be either one of page or
+                request.
+            </description>
+            <name>scope</name>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <example>&amp;lt;cqex:getProperties var="properties" path="jcr:content/myNode" resource="${resource}" /&gt;</example>
@@ -69,7 +103,7 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <description>The page context variable in which to save the resource</description>
+            <description>The page context variable to save the value</description>
             <name>var</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
@@ -77,6 +111,13 @@
         <attribute>
             <description>The default value. If no value is retrieved this value will be returned.</description>
             <name>defaultValue</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The scope in which to save the attribute. May be either one of page or
+                request.
+            </description>
+            <name>scope</name>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <example>&amp;lt;cqex:getProperty var="prop" key="myProp" properties="${properties}" defaultValue="Default"/&gt;</example>
@@ -95,8 +136,16 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <description>The page context variable in which to save the resource</description>
+            <description>The page context variable to save the value</description>
             <name>var</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The scope in which to save the attribute. May be either one of page or
+                request.
+            </description>
+            <name>scope</name>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <example>&amp;lt;cqex:getResource var="resource" path="/content/mysite" /&gt;</example>
@@ -113,6 +162,13 @@
             <description>The resource to list the children of, required but may be null</description>
             <name>resource</name>
             <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The scope in which to save the attribute. May be either one of page or
+                request.
+            </description>
+            <name>scope</name>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>

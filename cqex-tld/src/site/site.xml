@@ -30,6 +30,7 @@
 		<menu name="Overview">
 			<item name="Introduction" href="index.html" />
 			<item name="Documentation" href="doc/index.html" />
+			<item name="Download" href="${project.artifactId}-${project.version}.jar" />
 		</menu>
 		<menu ref="reports" />
 	</body>

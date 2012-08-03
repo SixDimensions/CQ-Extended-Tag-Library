@@ -4,8 +4,6 @@
 package com.sixdimensions.wcm.cq.cqex.tags;
 
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspTagException;
-import javax.servlet.jsp.tagext.TagSupport;
 
 import org.apache.sling.api.resource.ValueMap;
 import org.slf4j.Logger;
@@ -21,7 +19,7 @@ import org.tldgen.annotations.Tag;
  * @author dklco
  */
 @Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getProperty var=\"prop\" key=\"myProp\" properties=\"${properties}\" defaultValue=\"Default\"/>")
-public class GetPropertyTag extends TagSupport {
+public class GetPropertyTag extends AttributeSettingTag {
 	private static final Logger log = LoggerFactory
 			.getLogger(GetPropertyTag.class);
 	private static final long serialVersionUID = 2906794811653608479L;
@@ -45,12 +43,6 @@ public class GetPropertyTag extends TagSupport {
 	private ValueMap properties;
 
 	/**
-	 * The page context variable in which to save the resource
-	 */
-	@Attribute(required = true)
-	private String var;
-
-	/**
 	 * @InheretDoc
 	 */
 	@Override
@@ -63,7 +55,7 @@ public class GetPropertyTag extends TagSupport {
 		} else {
 			value = this.properties.get(this.key);
 		}
-		this.pageContext.setAttribute(this.var, value);
+		this.setAttribute(this.var, value);
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
 
@@ -79,10 +71,6 @@ public class GetPropertyTag extends TagSupport {
 		return this.properties;
 	}
 
-	public String getVar() {
-		return this.var;
-	}
-
 	public void setDefaultValue(String defaultValue) {
 		this.defaultValue = defaultValue;
 	}
@@ -93,9 +81,5 @@ public class GetPropertyTag extends TagSupport {
 
 	public void setProperties(ValueMap properties) {
 		this.properties = properties;
-	}
-
-	public void setVar(String var) throws JspTagException {
-		this.var = var;
 	}
 }

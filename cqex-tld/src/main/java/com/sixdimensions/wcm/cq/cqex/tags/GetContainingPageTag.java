@@ -5,7 +5,6 @@ package com.sixdimensions.wcm.cq.cqex.tags;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
-import javax.servlet.jsp.tagext.TagSupport;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +20,7 @@ import com.day.cq.wcm.api.PageManager;
  * @author dklco
  */
 @Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getContainingPage var=\"page\" path=\"/content/geometrixxx/en/jcr:content\" />")
-public class GetContainingPageTag extends TagSupport {
+public class GetContainingPageTag extends AttributeSettingTag {
 	private static final long serialVersionUID = 2906794811653608479L;
 	private static final Logger log = LoggerFactory
 			.getLogger(GetContainingPageTag.class);
@@ -34,12 +33,6 @@ public class GetContainingPageTag extends TagSupport {
 	private String path;
 
 	/**
-	 * The page context variable to save the page
-	 */
-	@Attribute(required = true)
-	private String var;
-
-	/**
 	 * @InheretDoc
 	 */
 	@Override
@@ -50,8 +43,7 @@ public class GetContainingPageTag extends TagSupport {
 				.getAttribute("pageManager");
 
 		if (pageMgr != null) {
-			this.pageContext.setAttribute(this.var,
-					pageMgr.getContainingPage(this.path));
+			this.setAttribute(this.var, pageMgr.getContainingPage(this.path));
 		} else {
 			log.error("Page manager not found");
 		}
@@ -69,16 +61,5 @@ public class GetContainingPageTag extends TagSupport {
 	 */
 	public void setPath(String path) throws JspTagException {
 		this.path = path;
-	}
-
-	/**
-	 * The page context variable to save the page
-	 * 
-	 * @param var
-	 *            the name of the page context variable
-	 * @throws JspTagException
-	 */
-	public void setVar(String var) throws JspTagException {
-		this.var = var;
 	}
 }
