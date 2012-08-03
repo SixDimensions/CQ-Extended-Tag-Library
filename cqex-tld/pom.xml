@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<version>0.0.2</version> 
+	<version>0.0.3-SNAPSHOT</version> 
 	<packaging>bundle</packaging>
 
 	<groupId>com.sixdimensions.wcm.cq</groupId>
@@ -222,7 +222,7 @@
 				<version>1.7</version>
 				<executions>
 					<execution>
-						<phase>site</phase>
+						<phase>package</phase>
 						<configuration>
 							<target>
 								<copy toDir="target/site" file="target/${project.artifactId}-${project.version}.jar" />
