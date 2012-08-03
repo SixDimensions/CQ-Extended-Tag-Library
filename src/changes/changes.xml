@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document>
+	<properties>
+		<title>CQ Deploy Plugin</title>
+		<author email="dan.klco@sixdimensions.com">Dan Klco</author>
+	</properties>
+	<body>
+		<release version="0.0.2" date="2012-08-02" description="Initial Release">
+			<action dev="Dan Klco" type="add">
+				Added a number of tags and EL functions
+			</action>
+		</release>
+	</body>
+</document>
