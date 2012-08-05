@@ -4,7 +4,6 @@
 package com.sixdimensions.wcm.cq.cqex.tags;
 
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspTagException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,8 +31,10 @@ public class GetContainingPageTag extends AttributeSettingTag {
 	@Attribute
 	private String path;
 
-	/**
-	 * @InheretDoc
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see javax.servlet.jsp.tagext.TagSupport#doEndTag()
 	 */
 	@Override
 	public int doEndTag() throws JspException {
@@ -55,11 +56,20 @@ public class GetContainingPageTag extends AttributeSettingTag {
 	 * The absolute path of the page to retrieve or to a resource under the
 	 * page.
 	 * 
-	 * @param path
-	 *            the path of the resource to retrieve
-	 * @throws JspTagException
+	 * @return the path of the page to retrieve
 	 */
-	public void setPath(String path) throws JspTagException {
+	public String getPath() {
+		return this.path;
+	}
+
+	/**
+	 * The absolute path of the page to retrieve or to a resource under the
+	 * page.
+	 * 
+	 * @param path
+	 *            the path of the page to retrieve
+	 */
+	public void setPath(String path) {
 		this.path = path;
 	}
 }

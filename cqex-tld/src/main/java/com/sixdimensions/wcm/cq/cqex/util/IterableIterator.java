@@ -12,10 +12,17 @@ import java.util.Iterator;
  * @author dklco
  * 
  * @param <E>
+ *            the type contained in the iterator, can be any Java Object
  */
 public class IterableIterator<E> implements Iterator<E>, Iterable<E> {
 	private final Iterator<E> data;
 
+	/**
+	 * Construct a new Iterable Iterator from the specified iterator.
+	 * 
+	 * @param data
+	 *            the iterator to wrap
+	 */
 	public IterableIterator(Iterator<E> data) {
 		this.data = data;
 	}

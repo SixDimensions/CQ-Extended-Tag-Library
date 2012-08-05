@@ -42,8 +42,10 @@ public class GetPropertyTag extends AttributeSettingTag {
 	@Attribute(required = true)
 	private ValueMap properties;
 
-	/**
-	 * @InheretDoc
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see javax.servlet.jsp.tagext.TagSupport#doEndTag()
 	 */
 	@Override
 	public int doEndTag() throws JspException {
@@ -59,26 +61,59 @@ public class GetPropertyTag extends AttributeSettingTag {
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
 
+	/**
+	 * Gets the default value.
+	 * 
+	 * @return the default value
+	 */
 	public Object getDefaultValue() {
 		return this.defaultValue;
 	}
 
+	/**
+	 * Gets the key to retrieve.
+	 * 
+	 * @return the key
+	 */
 	public String getKey() {
 		return this.key;
 	}
 
+	/**
+	 * Gets the map of properties.
+	 * 
+	 * @return the value map of properties
+	 */
 	public ValueMap getProperties() {
 		return this.properties;
 	}
 
+	/**
+	 * Set the default value
+	 * 
+	 * @param defaultValue
+	 *            the default value
+	 */
 	public void setDefaultValue(String defaultValue) {
 		this.defaultValue = defaultValue;
 	}
 
+	/**
+	 * Sets the key
+	 * 
+	 * @param key
+	 *            the key
+	 */
 	public void setKey(String key) {
 		this.key = key;
 	}
 
+	/**
+	 * Sets the properties.
+	 * 
+	 * @param properties
+	 *            the properties
+	 */
 	public void setProperties(ValueMap properties) {
 		this.properties = properties;
 	}
