@@ -6,7 +6,6 @@ package com.sixdimensions.wcm.cq.cqex.tags;
 import java.util.Map;
 
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspTagException;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -26,9 +25,10 @@ import org.tldgen.annotations.Tag;
  */
 @Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getProperties var=\"properties\" path=\"jcr:content/myNode\" resource=\"${resource}\" />")
 public class GetPropertiesTag extends AttributeSettingTag {
-	private static final long serialVersionUID = 2906794811653608479L;
 	private static final Logger log = LoggerFactory
 			.getLogger(GetPropertiesTag.class);
+
+	private static final long serialVersionUID = 2906794811653608479L;
 
 	/**
 	 * The path of the resource to retrieve as a ValueMap. If a resource is
@@ -37,7 +37,6 @@ public class GetPropertiesTag extends AttributeSettingTag {
 	 */
 	@Attribute
 	private String path;
-
 	/**
 	 * The resource to use as a base for retrieving the properties. If this and
 	 * path are specified the properties at the sub-resource specified by the
@@ -46,8 +45,10 @@ public class GetPropertiesTag extends AttributeSettingTag {
 	@Attribute
 	private Resource resource;
 
-	/**
-	 * @InheretDoc
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see javax.servlet.jsp.tagext.TagSupport#doEndTag()
 	 */
 	@Override
 	public int doEndTag() throws JspException {
@@ -85,13 +86,30 @@ public class GetPropertiesTag extends AttributeSettingTag {
 	}
 
 	/**
+	 * Gets the path of the resource to retrieve.
+	 * 
+	 * @return the path of the resource to retrieve
+	 */
+	public String getPath() {
+		return this.path;
+	}
+
+	/**
+	 * Gets the resource to retrieve the properties from.
+	 * 
+	 * @return the resource from which to retrieve the properties
+	 */
+	public Resource getResource() {
+		return this.resource;
+	}
+
+	/**
 	 * Set the path of the resource to retrieve.
 	 * 
 	 * @param path
 	 *            the path of the resource to retrieve
-	 * @throws JspTagException
 	 */
-	public void setPath(String path) throws JspTagException {
+	public void setPath(String path) {
 		this.path = path;
 	}
 
@@ -100,9 +118,8 @@ public class GetPropertiesTag extends AttributeSettingTag {
 	 * 
 	 * @param resource
 	 *            the resource from which to retrieve the properties
-	 * @throws JspTagException
 	 */
-	public void setResource(Resource resource) throws JspTagException {
+	public void setResource(Resource resource) {
 		this.resource = resource;
 	}
 }

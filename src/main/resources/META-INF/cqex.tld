@@ -159,9 +159,24 @@
         <tag-class>com.sixdimensions.wcm.cq.cqex.tags.ListChildrenTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
-            <description>The resource to list the children of, required but may be null</description>
-            <name>resource</name>
+            <description>The page to list the children of, either this or the resource must be
+                specified.
+            </description>
+            <name>page</name>
             <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The page context variable to save the value</description>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The resource to list the children of, either this or the page must be
+                specified.
+            </description>
+            <name>resource</name>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
@@ -169,11 +184,6 @@
                 request.
             </description>
             <name>scope</name>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <description>The page context variable in which to save the children</description>
-            <name>var</name>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <example>&amp;lt;cqex:listChildren var="resources" resource="${resource}" /&gt;</example>

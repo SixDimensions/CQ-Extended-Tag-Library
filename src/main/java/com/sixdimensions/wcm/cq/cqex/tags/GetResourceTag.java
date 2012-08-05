@@ -19,9 +19,9 @@ import org.tldgen.annotations.Tag;
  */
 @Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getResource var=\"resource\" path=\"/content/mysite\" />")
 public class GetResourceTag extends AttributeSettingTag {
-	private static final long serialVersionUID = 5861756752614447760L;
 	private static final Logger log = LoggerFactory
 			.getLogger(GetResourceTag.class);
+	private static final long serialVersionUID = 5861756752614447760L;
 
 	/**
 	 * The absolute path of the resource to retrieve
@@ -49,6 +49,21 @@ public class GetResourceTag extends AttributeSettingTag {
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
 
+	/**
+	 * Get the path of the resource to retrieve.
+	 * 
+	 * @return the path of the resource to retrieve
+	 */
+	public String getPath() {
+		return this.path;
+	}
+
+	/**
+	 * Set the absolute path of the resource to retrieve.
+	 * 
+	 * @param path
+	 *            the path of the resource to retrieve, must be absolute
+	 */
 	public void setPath(String path) {
 		this.path = path;
 	}

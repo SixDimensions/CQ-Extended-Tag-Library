@@ -9,7 +9,10 @@ import javax.servlet.jsp.tagext.TagSupport;
 import org.tldgen.annotations.Attribute;
 
 /**
- * Abstract class for tags which set a variable to extend.
+ * Abstract class for tags which set an attribute to extend. I am limiting the
+ * variable scope to page and request as using the session is discouraged in
+ * Adobe CQ and setting an application variable from JSP seems like a very bad
+ * idea.
  * 
  * @author dklco
  */
@@ -31,10 +34,20 @@ public abstract class AttributeSettingTag extends TagSupport {
 	@Attribute(required = true)
 	protected String var;
 
+	/**
+	 * Get the scope in which the variable will be saved.
+	 * 
+	 * @return the scope
+	 */
 	public String getScope() {
 		return this.scope;
 	}
 
+	/**
+	 * Get the variable name in which to save the variable.
+	 * 
+	 * @return the variable name
+	 */
 	public String getVar() {
 		return this.var;
 	}
@@ -56,10 +69,22 @@ public abstract class AttributeSettingTag extends TagSupport {
 		this.pageContext.setAttribute(name, value, iScope);
 	}
 
+	/**
+	 * Set the scope that will be used to determine where the variable is saved.
+	 * 
+	 * @param scope
+	 *            the scope, can be either 'page' or 'request'
+	 */
 	public void setScope(String scope) {
 		this.scope = scope;
 	}
 
+	/**
+	 * Set the variable name in which to save the value.
+	 * 
+	 * @param var
+	 *            the variable name
+	 */
 	public void setVar(String var) {
 		this.var = var;
 	}
