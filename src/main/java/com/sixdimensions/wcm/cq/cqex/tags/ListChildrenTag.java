@@ -10,6 +10,7 @@ import org.tldgen.annotations.Attribute;
 import org.tldgen.annotations.BodyContent;
 import org.tldgen.annotations.Tag;
 
+import com.day.cq.wcm.api.Page;
 import com.sixdimensions.wcm.cq.cqex.util.IterableIterator;
 
 /**
@@ -26,16 +27,17 @@ public class ListChildrenTag extends AttributeSettingTag {
 	private static final long serialVersionUID = 5861756752614447760L;
 
 	/**
-	 * The resource to list the children of, required but may be null
+	 * The page to list the children of, either this or the resource must be
+	 * specified.
 	 */
 	@Attribute(required = true)
-	private Resource resource;
-
+	private Page page;
 	/**
-	 * The page context variable in which to save the children
+	 * The resource to list the children of, either this or the page must be
+	 * specified.
 	 */
 	@Attribute
-	private final String var = "resources";
+	private Resource resource;
 
 	/*
 	 * (non-Javadoc)
@@ -45,26 +47,55 @@ public class ListChildrenTag extends AttributeSettingTag {
 	@Override
 	public int doEndTag() {
 		log.trace("doEndTag");
+		IterableIterator<?> children = null;
 		if (this.resource != null) {
 			log.debug("Listing children of: " + this.resource.getPath());
-			IterableIterator<Resource> children = new IterableIterator<Resource>(
+			children = new IterableIterator<Resource>(
 					this.resource.listChildren());
-			this.setAttribute(this.var, children);
+		} else if (this.page != null) {
+			log.debug("Listing children of: " + this.page.getPath());
+			children = new IterableIterator<Page>(this.page.listChildren());
 		} else {
 			log.debug("No/null resource specified");
 		}
+		this.setAttribute(this.var, children);
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
 
 	/**
-	 * Get the current resource.
+	 * The page specified to list the children of.
 	 * 
-	 * @return the current resource
+	 * @return the page or null
+	 */
+	public Page getPage() {
+		return this.page;
+	}
+
+	/**
+	 * Get the resource of which the children will be listed.
+	 * 
+	 * @return the resource or null
 	 */
 	public Resource getResource() {
 		return this.resource;
 	}
 
+	/**
+	 * Set the page to list the children of.
+	 * 
+	 * @param page
+	 *            the page
+	 */
+	public void setPage(Page page) {
+		this.page = page;
+	}
+
+	/**
+	 * Set the resource to list the children of
+	 * 
+	 * @param resource
+	 *            the resource
+	 */
 	public void setResource(Resource resource) {
 		this.resource = resource;
 	}
