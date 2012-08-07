@@ -30,7 +30,7 @@ public class ListChildrenTag extends AttributeSettingTag {
 	 * The page to list the children of, either this or the resource must be
 	 * specified.
 	 */
-	@Attribute(required = true)
+	@Attribute
 	private Page page;
 	/**
 	 * The resource to list the children of, either this or the page must be
