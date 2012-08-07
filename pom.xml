@@ -294,7 +294,6 @@
 		</pluginManagement>
 	</build>
 
-
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.sling</groupId>
