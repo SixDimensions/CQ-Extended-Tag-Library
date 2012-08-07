@@ -159,17 +159,16 @@
         <tag-class>com.sixdimensions.wcm.cq.cqex.tags.ListChildrenTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
-            <description>The page to list the children of, either this or the resource must be
-                specified.
-            </description>
-            <name>page</name>
+            <description>The page context variable to save the value</description>
+            <name>var</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <description>The page context variable to save the value</description>
-            <name>var</name>
-            <required>true</required>
+            <description>The page to list the children of, either this or the resource must be
+                specified.
+            </description>
+            <name>page</name>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
