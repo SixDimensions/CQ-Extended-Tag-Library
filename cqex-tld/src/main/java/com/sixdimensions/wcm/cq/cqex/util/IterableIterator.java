@@ -28,6 +28,10 @@ import java.util.Iterator;
  *            the type contained in the iterator, can be any Java Object
  */
 public class IterableIterator<E> implements Iterator<E>, Iterable<E> {
+
+	/**
+	 * The iterator being wrapped by this IterableIterator.
+	 */
 	private final Iterator<E> iterator;
 
 	/**
