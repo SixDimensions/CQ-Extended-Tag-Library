@@ -106,10 +106,10 @@ public class ListChildrenTag extends AttributeSettingTag {
 	/**
 	 * Set the resource to list the children of.
 	 * 
-	 * @param currentResource
+	 * @param resource
 	 *            the resource
 	 */
-	public void setResource(final Resource currentResource) {
-		this.resource = currentResource;
+	public void setResource(final Resource resource) {
+		this.resource = resource;
 	}
 }

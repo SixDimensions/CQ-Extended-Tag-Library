@@ -40,8 +40,8 @@ public class IterableIterator<E> implements Iterator<E>, Iterable<E> {
 	 * @param wrapIterator
 	 *            the iterator to wrap
 	 */
-	public IterableIterator(final Iterator<E> wrapIterator) {
-		this.iterator = wrapIterator;
+	public IterableIterator(final Iterator<E> iterator) {
+		this.iterator = iterator;
 	}
 
 	/*
