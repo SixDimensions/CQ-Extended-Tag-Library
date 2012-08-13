@@ -23,6 +23,7 @@
 			<url>scp://www.6dlabs.com/var/www/vhosts/cqex-tld/htdocs/</url>
 		</site>
 		<repository>
+			<id>download-site</id>
 			<name>Download Site</name>
 			<url>file:///var/www/vhosts/cqex-tld/htdocs/download</url>
 		</repository>
