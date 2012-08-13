@@ -5,7 +5,17 @@
 		<author email="dan.klco@sixdimensions.com">Dan Klco</author>
 	</properties>
 	<body>
-		<release version="0.0.3" date="2012-08-07" description="Current Release">
+		<release version="0.0.4" date="2012-08-13" description="Current Release">
+			<action dev="Dan Klco" type="fix">
+				Fixed licensing in source and on the site.
+			</action>
+		</release>
+		<release version="0.0.4" date="2012-08-13">
+			<action dev="Dan Klco" type="fix">
+				Fixed the deployment script.
+			</action>
+		</release>
+		<release version="0.0.3" date="2012-08-07">
 			<action dev="Dan Klco" type="fix">
 				Fixed an issue where the page
 				attribute was required on the list children tag.
