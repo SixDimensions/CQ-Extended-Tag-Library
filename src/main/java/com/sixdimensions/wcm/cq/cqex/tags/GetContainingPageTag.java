@@ -53,7 +53,7 @@ public class GetContainingPageTag extends AttributeSettingTag {
 	public int doEndTag() throws JspException {
 		log.trace("doEndTag");
 
-		PageManager pageMgr = (PageManager) this.pageContext
+		final PageManager pageMgr = (PageManager) this.pageContext
 				.getAttribute("pageManager");
 
 		if (pageMgr != null) {
@@ -82,7 +82,7 @@ public class GetContainingPageTag extends AttributeSettingTag {
 	 * @param path
 	 *            the path of the page to retrieve
 	 */
-	public void setPath(String path) {
+	public void setPath(final String path) {
 		this.path = path;
 	}
 }

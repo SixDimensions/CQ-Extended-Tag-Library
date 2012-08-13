@@ -36,7 +36,7 @@ public class IterableIterator<E> implements Iterator<E>, Iterable<E> {
 	 * @param data
 	 *            the iterator to wrap
 	 */
-	public IterableIterator(Iterator<E> data) {
+	public IterableIterator(final Iterator<E> data) {
 		this.data = data;
 	}
 

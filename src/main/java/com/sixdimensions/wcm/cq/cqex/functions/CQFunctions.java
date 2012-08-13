@@ -45,7 +45,7 @@ public class CQFunctions {
 	 * @return the title to display in the navigation for the page
 	 */
 	@Function(example = "${cqex:getNavTitle(page)}")
-	public static String getNavTitle(Page page) {
+	public static String getNavTitle(final Page page) {
 		log.trace("getNavTitle");
 
 		if (page == null) {
@@ -78,7 +78,7 @@ public class CQFunctions {
 	 * @return the title to display in the navigation for the page
 	 */
 	@Function(example = "${cqex:getPageTitle(page)}")
-	public static String getPageTitle(Page page) {
+	public static String getPageTitle(final Page page) {
 		log.trace("getPageTitle");
 
 		if (page == null) {

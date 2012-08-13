@@ -107,7 +107,7 @@ public class GetPropertyTag extends AttributeSettingTag {
 	 * @param defaultValue
 	 *            the default value
 	 */
-	public void setDefaultValue(String defaultValue) {
+	public void setDefaultValue(final String defaultValue) {
 		this.defaultValue = defaultValue;
 	}
 
@@ -117,7 +117,7 @@ public class GetPropertyTag extends AttributeSettingTag {
 	 * @param key
 	 *            the key
 	 */
-	public void setKey(String key) {
+	public void setKey(final String key) {
 		this.key = key;
 	}
 
@@ -127,7 +127,7 @@ public class GetPropertyTag extends AttributeSettingTag {
 	 * @param properties
 	 *            the properties
 	 */
-	public void setProperties(ValueMap properties) {
+	public void setProperties(final ValueMap properties) {
 		this.properties = properties;
 	}
 }

@@ -45,8 +45,8 @@ public class SlingFunctions {
 	 * @return
 	 */
 	@Function(example = "${cqex:getProperty(properties, key, defaultValue)}")
-	public static Object getProperty(ValueMap properties, String key,
-			Object defaultValue) {
+	public static Object getProperty(final ValueMap properties,
+			final String key, final Object defaultValue) {
 		log.trace("getProperty");
 		Object value = null;
 		if (defaultValue != null) {
@@ -67,7 +67,7 @@ public class SlingFunctions {
 	 * @return true if there is a child at the specified path, false otherwise
 	 */
 	@Function(example = "${cqex:hasChild(resource,path)}")
-	public static boolean hasChild(Resource resource, String path) {
+	public static boolean hasChild(final Resource resource, final String path) {
 		log.trace("hasChild");
 		return resource.getChild(path) != null;
 	}

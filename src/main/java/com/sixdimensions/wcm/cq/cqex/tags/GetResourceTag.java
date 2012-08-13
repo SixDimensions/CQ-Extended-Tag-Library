@@ -52,10 +52,10 @@ public class GetResourceTag extends AttributeSettingTag {
 		log.trace("doEndTag");
 
 		log.debug("Retrieving resource at path");
-		SlingHttpServletRequest slingRequest = (SlingHttpServletRequest) this.pageContext
+		final SlingHttpServletRequest slingRequest = (SlingHttpServletRequest) this.pageContext
 				.getRequest();
-		Resource resource = slingRequest.getResourceResolver().getResource(
-				this.path);
+		final Resource resource = slingRequest.getResourceResolver()
+				.getResource(this.path);
 		log.debug("Retrieved resource: "
 				+ (resource != null ? resource.getPath() : "null"));
 		this.setAttribute(this.var, resource);
@@ -77,7 +77,7 @@ public class GetResourceTag extends AttributeSettingTag {
 	 * @param path
 	 *            the path of the resource to retrieve, must be absolute
 	 */
-	public void setPath(String path) {
+	public void setPath(final String path) {
 		this.path = path;
 	}
 
