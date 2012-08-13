@@ -24,7 +24,7 @@
         <tag-class>com.sixdimensions.wcm.cq.cqex.tags.GetContainingPageTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
-            <description>The page context variable to save the value</description>
+            <description>The page context variable to save the value.</description>
             <name>var</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
@@ -53,7 +53,7 @@
         <tag-class>com.sixdimensions.wcm.cq.cqex.tags.GetPropertiesTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
-            <description>The page context variable to save the value</description>
+            <description>The page context variable to save the value.</description>
             <name>var</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
@@ -103,7 +103,7 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <description>The page context variable to save the value</description>
+            <description>The page context variable to save the value.</description>
             <name>var</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
@@ -136,7 +136,7 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <description>The page context variable to save the value</description>
+            <description>The page context variable to save the value.</description>
             <name>var</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
@@ -159,7 +159,7 @@
         <tag-class>com.sixdimensions.wcm.cq.cqex.tags.ListChildrenTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
-            <description>The page context variable to save the value</description>
+            <description>The page context variable to save the value.</description>
             <name>var</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>

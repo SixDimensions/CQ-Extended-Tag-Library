@@ -27,7 +27,9 @@
 	<!-- See http://checkstyle.sf.net/config_misc.html#Translation -->
 	<module name="Translation" />
 
-	<module name="FileLength" />
+	<module name="FileLength">
+      	<property name="max" value="1000"/>
+	</module>
 
 	<!-- Following interprets the header file as regular expressions. -->
 	<!-- <module name="RegexpHeader"/> -->
@@ -94,7 +96,7 @@
 		</module>
 		<module name="MethodLength" />
 		<module name="ParameterNumber" />
-
+		<module name="ExecutableStatementCount"/>
 
 		<!-- Checks for whitespace -->
 		<!-- See http://checkstyle.sf.net/config_whitespace.html -->
