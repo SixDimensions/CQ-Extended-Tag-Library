@@ -22,6 +22,11 @@
 			<id>cqex-tld.6dlabs.com.com</id>
 			<url>scp://www.6dlabs.com/var/www/vhosts/cqex-tld/htdocs/</url>
 		</site>
+		<repository>
+			<id>download-site</id>
+			<name>Download Site</name>
+			<url>file:///var/www/vhosts/cqex-tld/htdocs/download</url>
+		</repository>
 	</distributionManagement>
 
 	<developers>
@@ -72,19 +77,6 @@
 						<id>generate-scr-scrdescriptor</id>
 						<goals>
 							<goal>scr</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.sixdimensions.wcm.cq</groupId>
-				<artifactId>cq-deploy-plugin</artifactId>
-				<version>0.1.3</version>
-				<executions>
-					<execution>
-						<id>install-bundle</id>
-						<goals>
-							<goal>install-bundle</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -294,33 +286,34 @@
 		</pluginManagement>
 	</build>
 
-
-
 	<profiles>
 		<profile>
-			<id>release-sign-artifacts</id>
 			<activation>
-				<property>
-					<name>performRelease</name>
-					<value>true</value>
-				</property>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
+						<groupId>com.sixdimensions.wcm.cq</groupId>
+						<artifactId>cq-deploy-plugin</artifactId>
+						<version>0.1.3</version>
 						<executions>
 							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
+								<id>install-bundle</id>
 								<goals>
-									<goal>sign</goal>
+									<goal>install-bundle</goal>
 								</goals>
 							</execution>
 						</executions>
+						<configuration>
+						</configuration>
 					</plugin>
 				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>release</id>
+			<build>
 			</build>
 		</profile>
 	</profiles>
