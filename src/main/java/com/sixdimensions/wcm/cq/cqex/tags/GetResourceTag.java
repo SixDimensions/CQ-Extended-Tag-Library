@@ -58,7 +58,7 @@ public class GetResourceTag extends AttributeSettingTag {
 				.getResource(this.path);
 		log.debug("Retrieved resource: "
 				+ (resource != null ? resource.getPath() : "null"));
-		this.setAttribute(this.var, resource);
+		this.setAttribute(this.getVar(), resource);
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
 

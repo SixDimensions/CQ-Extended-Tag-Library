@@ -30,8 +30,19 @@ import org.tldgen.annotations.Attribute;
  * @author dklco
  */
 public abstract class AttributeSettingTag extends TagSupport {
+	/**
+	 * The UID for this class.
+	 */
 	private static final long serialVersionUID = -7483515583932692390L;
+
+	/**
+	 * The scope name for the page context.
+	 */
 	public static final String PAGE_SCOPE = "page";
+
+	/**
+	 * The scope name for the current request.
+	 */
 	public static final String REQUEST_SCOPE = "request";
 
 	/**
@@ -42,10 +53,10 @@ public abstract class AttributeSettingTag extends TagSupport {
 	private String scope = "session";
 
 	/**
-	 * The page context variable to save the value
+	 * The page context variable to save the value.
 	 */
 	@Attribute(required = true)
-	protected String var;
+	private String var;
 
 	/**
 	 * Get the scope in which the variable will be saved.
@@ -85,20 +96,20 @@ public abstract class AttributeSettingTag extends TagSupport {
 	/**
 	 * Set the scope that will be used to determine where the variable is saved.
 	 * 
-	 * @param scope
+	 * @param varScope
 	 *            the scope, can be either 'page' or 'request'
 	 */
-	public void setScope(final String scope) {
-		this.scope = scope;
+	public void setScope(final String varScope) {
+		this.scope = varScope;
 	}
 
 	/**
 	 * Set the variable name in which to save the value.
 	 * 
-	 * @param var
+	 * @param varName
 	 *            the variable name
 	 */
-	public void setVar(final String var) {
-		this.var = var;
+	public void setVar(final String varName) {
+		this.var = varName;
 	}
 }

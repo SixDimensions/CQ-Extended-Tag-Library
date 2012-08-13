@@ -90,7 +90,7 @@ public class GetPropertiesTag extends AttributeSettingTag {
 				&& !rsrc.getResourceType().equals(
 						Resource.RESOURCE_TYPE_NON_EXISTING)) {
 			properties = rsrc.adaptTo(ValueMap.class);
-			this.setAttribute(this.var, properties);
+			this.setAttribute(this.getVar(), properties);
 		} else {
 			log.debug("Resource not found at path: " + this.path);
 		}
