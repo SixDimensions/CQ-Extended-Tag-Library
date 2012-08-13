@@ -10,10 +10,8 @@ echo "Checking out TRUNK..."
 svn co http://sourcecontrol.6dlabs.com/svn/sandbox/cqex-tld/trunk/cqex-tld/
 cd cqex-tld
 echo "Preparing release..."
-mvn -DskipTests=true release:clean release:prepare
+mvn -DskipTests=true release:clean release:prepare -P release
 echo "Performing release..."
-mvn -DskipTests=true release:perform
-echo "Deploying site..."
-mvn -DskipTests=true clean package site:site site:deploy
+mvn -DskipTests=true release:perform -P release
 echo "Release Complete!"
 cd ..
