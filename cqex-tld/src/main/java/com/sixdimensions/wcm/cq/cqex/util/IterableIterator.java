@@ -28,7 +28,7 @@ import java.util.Iterator;
  *            the type contained in the iterator, can be any Java Object
  */
 public class IterableIterator<E> implements Iterator<E>, Iterable<E> {
-	private final Iterator<E> data;
+	private final Iterator<E> iterator;
 
 	/**
 	 * Construct a new Iterable Iterator from the specified iterator.
@@ -36,8 +36,8 @@ public class IterableIterator<E> implements Iterator<E>, Iterable<E> {
 	 * @param data
 	 *            the iterator to wrap
 	 */
-	public IterableIterator(final Iterator<E> data) {
-		this.data = data;
+	public IterableIterator(final Iterator<E> iterator) {
+		this.iterator = iterator;
 	}
 
 	/*
@@ -47,7 +47,7 @@ public class IterableIterator<E> implements Iterator<E>, Iterable<E> {
 	 */
 	@Override
 	public boolean hasNext() {
-		return this.data.hasNext();
+		return this.iterator.hasNext();
 	}
 
 	/*
@@ -57,7 +57,7 @@ public class IterableIterator<E> implements Iterator<E>, Iterable<E> {
 	 */
 	@Override
 	public Iterator<E> iterator() {
-		return this.data;
+		return this.iterator;
 	}
 
 	/*
@@ -67,7 +67,7 @@ public class IterableIterator<E> implements Iterator<E>, Iterable<E> {
 	 */
 	@Override
 	public E next() {
-		return this.data.next();
+		return this.iterator.next();
 	}
 
 	/*
@@ -77,7 +77,7 @@ public class IterableIterator<E> implements Iterator<E>, Iterable<E> {
 	 */
 	@Override
 	public void remove() {
-		this.data.remove();
+		this.iterator.remove();
 	}
 
 }
