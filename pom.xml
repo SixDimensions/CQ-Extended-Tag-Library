@@ -19,7 +19,7 @@
 
 	<distributionManagement>
 		<site>
-			<id>cqex-tld.6dlabs.com.com</id>
+			<id>cqex-tld.6dlabs.com</id>
 			<url>scp://www.6dlabs.com/var/www/vhosts/cqex-tld/htdocs/</url>
 		</site>
 		<repository>
@@ -38,7 +38,7 @@
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
 	</licenses>
 	<scm>
