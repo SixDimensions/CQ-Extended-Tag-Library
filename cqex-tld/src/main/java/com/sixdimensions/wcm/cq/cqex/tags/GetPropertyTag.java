@@ -70,7 +70,7 @@ public class GetPropertyTag extends AttributeSettingTag {
 		} else {
 			value = this.properties.get(this.key);
 		}
-		this.setAttribute(this.var, value);
+		this.setAttribute(this.getVar(), value);
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
 

@@ -57,7 +57,8 @@ public class GetContainingPageTag extends AttributeSettingTag {
 				.getAttribute("pageManager");
 
 		if (pageMgr != null) {
-			this.setAttribute(this.var, pageMgr.getContainingPage(this.path));
+			this.setAttribute(this.getVar(),
+					pageMgr.getContainingPage(this.path));
 		} else {
 			log.error("Page manager not found");
 		}

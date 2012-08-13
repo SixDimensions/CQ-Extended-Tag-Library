@@ -71,7 +71,7 @@ public class ListChildrenTag extends AttributeSettingTag {
 		} else {
 			log.debug("No/null resource specified");
 		}
-		this.setAttribute(this.var, children);
+		this.setAttribute(this.getVar(), children);
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
 
