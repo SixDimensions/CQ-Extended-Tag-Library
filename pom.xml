@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<version>0.0.3</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
 	<groupId>com.sixdimensions.wcm.cq</groupId>
@@ -37,9 +37,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<url>http://sourcecontrol.6dlabs.com/svn/sandbox/cqex-tld/tags/cqex-tld-0.0.3</url>
-		<developerConnection>scm:svn:http://sourcecontrol.6dlabs.com/svn/sandbox/cqex-tld/tags/cqex-tld-0.0.3</developerConnection>
-		<connection>scm:svn:http://sourcecontrol.6dlabs.com/svn/sandbox/cqex-tld/tags/cqex-tld-0.0.3</connection>
+		<url>http://sourcecontrol.6dlabs.com/svn/sandbox/cqex-tld/trunk/cqex-tld</url>
+		<developerConnection>scm:svn:http://sourcecontrol.6dlabs.com/svn/sandbox/cqex-tld/trunk/cqex-tld</developerConnection>
+		<connection>scm:svn:http://sourcecontrol.6dlabs.com/svn/sandbox/cqex-tld/trunk/cqex-tld</connection>
 	</scm>
 
 
