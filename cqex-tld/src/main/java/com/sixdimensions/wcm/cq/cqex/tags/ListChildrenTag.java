@@ -96,20 +96,20 @@ public class ListChildrenTag extends AttributeSettingTag {
 	/**
 	 * Set the page to list the children of.
 	 * 
-	 * @param page
+	 * @param currentPage
 	 *            the page
 	 */
-	public void setPage(final Page page) {
-		this.page = page;
+	public void setPage(final Page currentPage) {
+		this.page = currentPage;
 	}
 
 	/**
-	 * Set the resource to list the children of
+	 * Set the resource to list the children of.
 	 * 
-	 * @param resource
+	 * @param currentResource
 	 *            the resource
 	 */
-	public void setResource(final Resource resource) {
-		this.resource = resource;
+	public void setResource(final Resource currentResource) {
+		this.resource = currentResource;
 	}
 }
