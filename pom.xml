@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<version>0.0.11-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
 	<groupId>com.sixdimensions.wcm.cq</groupId>
@@ -19,7 +20,7 @@
 
 	<distributionManagement>
 		<site>
-			<id>cqex-tld.6dlabs.com.com</id>
+			<id>cqex-tld.6dlabs.com</id>
 			<url>scp://www.6dlabs.com/var/www/vhosts/cqex-tld/htdocs/</url>
 		</site>
 		<repository>
@@ -219,7 +220,8 @@
 						<phase>package</phase>
 						<configuration>
 							<target>
-								<copy toDir="target/site" file="target/${project.artifactId}-${project.version}.jar" />
+								<copy toDir="target/site"
+									file="target/${project.artifactId}-${project.version}.jar" />
 							</target>
 						</configuration>
 						<goals>
