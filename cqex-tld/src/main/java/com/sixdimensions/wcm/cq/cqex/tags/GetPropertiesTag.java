@@ -56,7 +56,7 @@ public class GetPropertiesTag extends AttributeSettingTag {
 	 * path will be retrieved.
 	 */
 	@Attribute
-	private Resource resource;
+	private transient Resource resource;
 
 	/*
 	 * (non-Javadoc)
@@ -68,7 +68,7 @@ public class GetPropertiesTag extends AttributeSettingTag {
 		log.trace("doEndTag");
 
 		Map<?, ?> properties = null;
-		SlingHttpServletRequest request = (SlingHttpServletRequest) this.pageContext
+		final SlingHttpServletRequest request = (SlingHttpServletRequest) this.pageContext
 				.getRequest();
 
 		Resource rsrc = null;
@@ -122,7 +122,7 @@ public class GetPropertiesTag extends AttributeSettingTag {
 	 * @param path
 	 *            the path of the resource to retrieve
 	 */
-	public void setPath(String path) {
+	public void setPath(final String path) {
 		this.path = path;
 	}
 
@@ -132,7 +132,7 @@ public class GetPropertiesTag extends AttributeSettingTag {
 	 * @param resource
 	 *            the resource from which to retrieve the properties
 	 */
-	public void setResource(Resource resource) {
+	public void setResource(final Resource resource) {
 		this.resource = resource;
 	}
 }

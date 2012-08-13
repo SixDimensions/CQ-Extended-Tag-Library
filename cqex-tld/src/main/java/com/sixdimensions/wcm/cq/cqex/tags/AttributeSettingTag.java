@@ -73,7 +73,7 @@ public abstract class AttributeSettingTag extends TagSupport {
 	 * @param value
 	 *            the value to save in the variable
 	 */
-	public void setAttribute(String name, Object value) {
+	public void setAttribute(final String name, final Object value) {
 		int iScope = PageContext.PAGE_SCOPE;
 		if (this.scope.equals(REQUEST_SCOPE)) {
 			iScope = PageContext.REQUEST_SCOPE;
@@ -88,7 +88,7 @@ public abstract class AttributeSettingTag extends TagSupport {
 	 * @param scope
 	 *            the scope, can be either 'page' or 'request'
 	 */
-	public void setScope(String scope) {
+	public void setScope(final String scope) {
 		this.scope = scope;
 	}
 
@@ -98,7 +98,7 @@ public abstract class AttributeSettingTag extends TagSupport {
 	 * @param var
 	 *            the variable name
 	 */
-	public void setVar(String var) {
+	public void setVar(final String var) {
 		this.var = var;
 	}
 }

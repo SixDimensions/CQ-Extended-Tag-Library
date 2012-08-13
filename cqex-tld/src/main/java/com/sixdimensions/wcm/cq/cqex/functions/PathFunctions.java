@@ -34,7 +34,7 @@ public class PathFunctions {
 	 * </ul>
 	 */
 	@Function(example = "${cqex:toLink(path)}")
-	public static String toLink(String path) {
+	public static String toLink(final String path) {
 		log.trace("toLink");
 
 		if (path == null) {

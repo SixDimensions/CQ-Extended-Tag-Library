@@ -44,13 +44,13 @@ public class ListChildrenTag extends AttributeSettingTag {
 	 * specified.
 	 */
 	@Attribute
-	private Page page;
+	private transient Page page;
 	/**
 	 * The resource to list the children of, either this or the page must be
 	 * specified.
 	 */
 	@Attribute
-	private Resource resource;
+	private transient Resource resource;
 
 	/*
 	 * (non-Javadoc)
@@ -99,7 +99,7 @@ public class ListChildrenTag extends AttributeSettingTag {
 	 * @param page
 	 *            the page
 	 */
-	public void setPage(Page page) {
+	public void setPage(final Page page) {
 		this.page = page;
 	}
 
@@ -109,7 +109,7 @@ public class ListChildrenTag extends AttributeSettingTag {
 	 * @param resource
 	 *            the resource
 	 */
-	public void setResource(Resource resource) {
+	public void setResource(final Resource resource) {
 		this.resource = resource;
 	}
 }
