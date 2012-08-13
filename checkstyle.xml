@@ -70,7 +70,7 @@
 
 		<!-- Checks for Headers -->
 		<module name="Header">
-			<property name="headerFile" value="${basedir}/java.header" />
+			<property name="headerFile" value="java.header" />
 			<property name="ignoreLines" value="2" />
 			<property name="fileExtensions" value="java" />
 		</module>
