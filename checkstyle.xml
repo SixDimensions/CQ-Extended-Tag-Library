@@ -43,6 +43,14 @@
 		<property name="message" value="Line has trailing spaces." />
 	</module>
 
+	<!-- Checks for Headers -->
+	<module name="Header">
+		<property name="headerFile" value="java.header" />
+		<property name="ignoreLines" value="2" />
+		<property name="fileExtensions" value="java" />
+	</module>
+
+
 	<module name="TreeWalker">
 
 		<property name="cacheFile" value="${checkstyle.cache.file}" />
@@ -67,13 +75,6 @@
 		<module name="StaticVariableName" />
 		<module name="TypeName" />
 
-
-		<!-- Checks for Headers -->
-		<module name="Header">
-			<property name="headerFile" value="java.header" />
-			<property name="ignoreLines" value="2" />
-			<property name="fileExtensions" value="java" />
-		</module>
 
 
 		<!-- Checks for imports -->
@@ -138,7 +139,8 @@
 
 		<!-- Checks for class design -->
 		<!-- See http://checkstyle.sf.net/config_design.html -->
-		<!--  I Dislike this form of extension: <module name="DesignForExtension" />  -->
+		<!-- I Dislike this form of extension: <module name="DesignForExtension" 
+			/> -->
 		<module name="FinalClass" />
 		<module name="HideUtilityClassConstructor" />
 		<module name="InterfaceIsType" />
