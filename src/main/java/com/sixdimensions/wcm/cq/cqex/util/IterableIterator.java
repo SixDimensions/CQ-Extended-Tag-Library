@@ -37,7 +37,7 @@ public class IterableIterator<E> implements Iterator<E>, Iterable<E> {
 	/**
 	 * Construct a new Iterable Iterator from the specified iterator.
 	 * 
-	 * @param wrapIterator
+	 * @param iterator
 	 *            the iterator to wrap
 	 */
 	public IterableIterator(final Iterator<E> iterator) {
