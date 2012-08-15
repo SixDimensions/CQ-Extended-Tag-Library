@@ -71,4 +71,12 @@ public class SlingFunctions {
 		log.trace("hasChild");
 		return resource.getChild(path) != null;
 	}
+
+	/**
+	 * Do not invoke the default constructor.
+	 */
+	protected SlingFunctions() {
+		// prevents calls from subclass
+		throw new UnsupportedOperationException();
+	}
 }

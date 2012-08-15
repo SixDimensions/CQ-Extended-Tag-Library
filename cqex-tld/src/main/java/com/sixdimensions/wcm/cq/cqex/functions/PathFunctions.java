@@ -50,4 +50,12 @@ public class PathFunctions {
 		}
 		return StringEscapeUtils.escapeHtml(link);
 	}
+
+	/**
+	 * Do not invoke the default constructor.
+	 */
+	protected PathFunctions() {
+		// prevents calls from subclass
+		throw new UnsupportedOperationException();
+	}
 }
