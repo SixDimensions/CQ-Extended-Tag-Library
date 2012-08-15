@@ -95,4 +95,12 @@ public class CQFunctions {
 		}
 		return title;
 	}
+
+	/**
+	 * Do not invoke the default constructor.
+	 */
+	protected CQFunctions() {
+		// prevents calls from subclass
+		throw new UnsupportedOperationException();
+	}
 }
