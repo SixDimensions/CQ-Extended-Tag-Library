@@ -42,7 +42,8 @@ public class SlingFunctions {
 	 * @param defaultValue
 	 *            the default value, if no value is retrieved, this value is
 	 *            returned
-	 * @return
+	 * @return the value of the property matching the key or the default value
+	 *         if no valid value is retrieved
 	 */
 	@Function(example = "${cqex:getProperty(properties, key, defaultValue)}")
 	public static Object getProperty(final ValueMap properties,
