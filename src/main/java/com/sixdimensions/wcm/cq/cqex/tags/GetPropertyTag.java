@@ -31,7 +31,8 @@ import org.tldgen.annotations.Tag;
  * 
  * @author dklco
  */
-@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getProperty var=\"prop\" key=\"myProp\" properties=\"${properties}\" defaultValue=\"Default\"/>")
+@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getProperty var=\"prop\" key=\"myProp\" "
+		+ "properties=\"${properties}\" defaultValue=\"Default\"/>")
 public class GetPropertyTag extends AttributeSettingTag {
 	private static final Logger log = LoggerFactory
 			.getLogger(GetPropertyTag.class);
@@ -44,13 +45,13 @@ public class GetPropertyTag extends AttributeSettingTag {
 	private Object defaultValue;
 
 	/**
-	 * The key of the attribute to retrieve
+	 * The key of the attribute to retrieve.
 	 */
 	@Attribute(required = true)
 	private String key;
 
 	/**
-	 * The ValueMap from which to retrieve the values
+	 * The ValueMap from which to retrieve the values.
 	 */
 	@Attribute(required = true)
 	private ValueMap properties;
@@ -102,7 +103,7 @@ public class GetPropertyTag extends AttributeSettingTag {
 	}
 
 	/**
-	 * Set the default value
+	 * Set the default value.
 	 * 
 	 * @param defaultValue
 	 *            the default value
@@ -112,7 +113,7 @@ public class GetPropertyTag extends AttributeSettingTag {
 	}
 
 	/**
-	 * Sets the key
+	 * Sets the key.
 	 * 
 	 * @param key
 	 *            the key
