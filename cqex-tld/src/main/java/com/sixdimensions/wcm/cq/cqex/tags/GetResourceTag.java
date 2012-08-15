@@ -37,7 +37,7 @@ public class GetResourceTag extends AttributeSettingTag {
 	private static final long serialVersionUID = 5861756752614447760L;
 
 	/**
-	 * The absolute path of the resource to retrieve
+	 * The absolute path of the resource to retrieve.
 	 */
 	@Attribute(required = true)
 	private String path;
@@ -56,8 +56,11 @@ public class GetResourceTag extends AttributeSettingTag {
 				.getRequest();
 		final Resource resource = slingRequest.getResourceResolver()
 				.getResource(this.path);
-		log.debug("Retrieved resource: "
-				+ (resource != null ? resource.getPath() : "null"));
+		if (resource != null) {
+			log.debug("Retrieved resource: " + resource.getPath());
+		} else {
+			log.warn("Failed to resolve resource at: " + this.path);
+		}
 		this.setAttribute(this.getVar(), resource);
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}

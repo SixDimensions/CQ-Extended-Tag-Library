@@ -21,6 +21,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tldgen.annotations.Function;
 
+/**
+ * Functions for manipulating CQ Paths.
+ * 
+ * @author dklco
+ */
 public class PathFunctions {
 	private static final Logger log = LoggerFactory
 			.getLogger(PathFunctions.class);
