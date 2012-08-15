@@ -26,7 +26,7 @@ public class PathFunctions {
 			.getLogger(PathFunctions.class);
 
 	/**
-	 * Converts the specified path into a link based on the following rules:
+	 * Converts the specified path into a link based on the following rules.
 	 * <ul>
 	 * <li>if the path starts with http, mailto, or # use the path as is</li>
 	 * <li>if the path contains '.' use the path as is</li>

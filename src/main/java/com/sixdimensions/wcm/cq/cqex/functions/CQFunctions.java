@@ -32,7 +32,8 @@ public class CQFunctions {
 			.getLogger(CQFunctions.class);
 
 	/**
-	 * Gets the navigation title, falling back on the following methods:
+	 * Gets the navigation title, falling back on the following methods.
+	 * 
 	 * <ul>
 	 * <li>getNavigationTitle</li>
 	 * <li>getPageTitle</li>
@@ -66,7 +67,7 @@ public class CQFunctions {
 	}
 
 	/**
-	 * Gets the page title, falling back on the following methods:
+	 * Gets the page title, falling back on the following methods.
 	 * <ul>
 	 * <li>getPageTitle</li>
 	 * <li>getTitle</li>
