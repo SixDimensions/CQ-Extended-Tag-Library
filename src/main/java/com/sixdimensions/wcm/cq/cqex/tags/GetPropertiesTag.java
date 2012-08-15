@@ -36,7 +36,8 @@ import org.tldgen.annotations.Tag;
  * 
  * @author dklco
  */
-@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getProperties var=\"properties\" path=\"jcr:content/myNode\" resource=\"${resource}\" />")
+@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getProperties "
+		+ "var=\"properties\" path=\"jcr:content/myNode\" resource=\"${resource}\" />")
 public class GetPropertiesTag extends AttributeSettingTag {
 	private static final Logger log = LoggerFactory
 			.getLogger(GetPropertiesTag.class);

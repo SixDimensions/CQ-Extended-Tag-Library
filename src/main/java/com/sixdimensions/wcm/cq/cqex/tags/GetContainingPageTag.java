@@ -31,7 +31,8 @@ import com.day.cq.wcm.api.PageManager;
  * 
  * @author dklco
  */
-@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getContainingPage var=\"page\" path=\"/content/geometrixxx/en/jcr:content\" />")
+@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getContainingPage "
+		+ "var=\"page\" path=\"/content/geometrixxx/en/jcr:content\" />")
 public class GetContainingPageTag extends AttributeSettingTag {
 	private static final long serialVersionUID = 2906794811653608479L;
 	private static final Logger log = LoggerFactory
