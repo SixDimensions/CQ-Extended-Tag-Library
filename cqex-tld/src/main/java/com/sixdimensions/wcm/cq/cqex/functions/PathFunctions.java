@@ -28,10 +28,14 @@ public class PathFunctions {
 	/**
 	 * Converts the specified path into a link based on the following rules:
 	 * <ul>
-	 * <li>if the path starts with 'http' use the path as is</li>
+	 * <li>if the path starts with http, mailto, or # use the path as is</li>
 	 * <li>if the path contains '.' use the path as is</li>
 	 * <li>otherwise append '.html'</li>
 	 * </ul>
+	 * 
+	 * @param path
+	 *            the JCR path to convert to a link
+	 * @return the link from the path
 	 */
 	@Function(example = "${cqex:toLink(path)}")
 	public static String toLink(final String path) {
