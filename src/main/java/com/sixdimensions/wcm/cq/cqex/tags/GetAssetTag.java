@@ -45,7 +45,7 @@ public class GetAssetTag extends AttributeSettingTag {
 	/**
 	 * The resource to use to retrieve the asset.
 	 */
-	@Attribute
+	@Attribute(required = true)
 	private Resource resource;
 
 	/*
