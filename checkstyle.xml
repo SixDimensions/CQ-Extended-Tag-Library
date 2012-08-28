@@ -17,9 +17,7 @@
 
 	<!-- Checks that each Java package has a Javadoc file used for commenting. -->
 	<!-- See http://checkstyle.sf.net/config_javadoc.html#JavadocPackage -->
-	<module name="JavadocPackage">
-		<property name="allowLegacy" value="true" />
-	</module>
+	<module name="JavadocPackage" />
 
 	<!-- Checks whether files end with a new line. -->
 	<!-- See http://checkstyle.sf.net/config_misc.html#NewlineAtEndOfFile -->
@@ -29,7 +27,9 @@
 	<!-- See http://checkstyle.sf.net/config_misc.html#Translation -->
 	<module name="Translation" />
 
-	<module name="FileLength" />
+	<module name="FileLength">
+      	<property name="max" value="1000"/>
+	</module>
 
 	<!-- Following interprets the header file as regular expressions. -->
 	<!-- <module name="RegexpHeader"/> -->
@@ -45,6 +45,14 @@
 		<property name="message" value="Line has trailing spaces." />
 	</module>
 
+	<!-- Checks for Headers -->
+	<module name="Header">
+		<property name="headerFile" value="java.header" />
+		<property name="ignoreLines" value="2" />
+		<property name="fileExtensions" value="java" />
+	</module>
+
+
 	<module name="TreeWalker">
 
 		<property name="cacheFile" value="${checkstyle.cache.file}" />
@@ -53,13 +61,17 @@
 		<!-- See http://checkstyle.sf.net/config_javadoc.html -->
 		<module name="JavadocMethod" />
 		<module name="JavadocType" />
-		<module name="JavadocVariable" />
+		<module name="JavadocVariable">
+			<property name="excludeScope" value="private" />
+		</module>
 		<module name="JavadocStyle" />
 
 
 		<!-- Checks for Naming Conventions. -->
 		<!-- See http://checkstyle.sf.net/config_naming.html -->
-		<module name="ConstantName" />
+		<module name="ConstantName">
+			<property name="format" value="^log|([A-Z][A-Z0-9]*(_[A-Z0-9]+)*)$"/>
+		</module>
 		<module name="LocalFinalVariableName" />
 		<module name="LocalVariableName" />
 		<module name="MemberName" />
@@ -69,20 +81,6 @@
 		<module name="StaticVariableName" />
 		<module name="TypeName" />
 
-
-		<!-- Checks for Headers -->
-		<!-- See http://checkstyle.sf.net/config_header.html -->
-		<!-- <module name="Header"> -->
-		<!-- The follow property value demonstrates the ability -->
-		<!-- to have access to ANT properties. In this case it uses -->
-		<!-- the ${basedir} property to allow Checkstyle to be run -->
-		<!-- from any directory within a project. See property -->
-		<!-- expansion, -->
-		<!-- http://checkstyle.sf.net/config.html#properties -->
-		<!-- <property -->
-		<!-- name="headerFile" -->
-		<!-- value="${basedir}/java.header"/> -->
-		<!-- </module> -->
 
 
 		<!-- Checks for imports -->
@@ -100,7 +98,7 @@
 		</module>
 		<module name="MethodLength" />
 		<module name="ParameterNumber" />
-
+		<module name="ExecutableStatementCount"/>
 
 		<!-- Checks for whitespace -->
 		<!-- See http://checkstyle.sf.net/config_whitespace.html -->
@@ -136,7 +134,10 @@
 		<module name="DoubleCheckedLocking" />    <!-- MY FAVOURITE -->
 		<module name="EmptyStatement" />
 		<module name="EqualsHashCode" />
-		<module name="HiddenField" />
+		<module name="HiddenField">
+			<property name="ignoreConstructorParameter" value="true" />
+			<property name="ignoreSetter" value="true" />
+		</module>
 		<module name="IllegalInstantiation" />
 		<module name="InnerAssignment" />
 		<module name="MagicNumber" />
@@ -147,7 +148,8 @@
 
 		<!-- Checks for class design -->
 		<!-- See http://checkstyle.sf.net/config_design.html -->
-		<module name="DesignForExtension" />
+		<!-- I Dislike this form of extension: <module name="DesignForExtension" 
+			/> -->
 		<module name="FinalClass" />
 		<module name="HideUtilityClassConstructor" />
 		<module name="InterfaceIsType" />

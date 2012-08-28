@@ -19,12 +19,40 @@
     <short-name>cqex</short-name>
     <uri>http://www.6dlabs.com/cqex/1.0</uri>
     <tag>
+        <description>Retrieves an asset from the resource. Checks whether the given resource is an
+            asset, and if not, travels upwards the resource hierarchy until a resource is
+            an asset.
+        </description>
+        <name>getAsset</name>
+        <tag-class>com.sixdimensions.wcm.cq.cqex.tags.GetAssetTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>The page context variable to save the value.</description>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The resource to use to retrieve the asset.</description>
+            <name>resource</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The scope in which to save the attribute. May be either one of page or
+                request.
+            </description>
+            <name>scope</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <example>&amp;lt;cqex:getAsset var="asset" resource="${resource}" /&gt;</example>
+    </tag>
+    <tag>
         <description>Tag that retrieves the page at or containing the specified path.</description>
         <name>getContainingPage</name>
         <tag-class>com.sixdimensions.wcm.cq.cqex.tags.GetContainingPageTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
-            <description>The page context variable to save the value</description>
+            <description>The page context variable to save the value.</description>
             <name>var</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
@@ -53,7 +81,7 @@
         <tag-class>com.sixdimensions.wcm.cq.cqex.tags.GetPropertiesTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
-            <description>The page context variable to save the value</description>
+            <description>The page context variable to save the value.</description>
             <name>var</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
@@ -91,19 +119,19 @@
         <tag-class>com.sixdimensions.wcm.cq.cqex.tags.GetPropertyTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
-            <description>The key of the attribute to retrieve</description>
+            <description>The key of the attribute to retrieve.</description>
             <name>key</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <description>The ValueMap from which to retrieve the values</description>
+            <description>The ValueMap from which to retrieve the values.</description>
             <name>properties</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <description>The page context variable to save the value</description>
+            <description>The page context variable to save the value.</description>
             <name>var</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
@@ -130,13 +158,13 @@
         <tag-class>com.sixdimensions.wcm.cq.cqex.tags.GetResourceTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
-            <description>The absolute path of the resource to retrieve</description>
+            <description>The absolute path of the resource to retrieve.</description>
             <name>path</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <description>The page context variable to save the value</description>
+            <description>The page context variable to save the value.</description>
             <name>var</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
@@ -159,7 +187,7 @@
         <tag-class>com.sixdimensions.wcm.cq.cqex.tags.ListChildrenTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
-            <description>The page context variable to save the value</description>
+            <description>The page context variable to save the value.</description>
             <name>var</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
@@ -188,7 +216,8 @@
         <example>&amp;lt;cqex:listChildren var="resources" resource="${resource}" /&gt;</example>
     </tag>
     <function>
-        <description>Gets the navigation title, falling back on the following methods:
+        <description>Gets the navigation title, falling back on the following methods.
+            
             &lt;ul&gt;
             &lt;li&gt;getNavigationTitle&lt;/li&gt;
             &lt;li&gt;getPageTitle&lt;/li&gt;
@@ -204,7 +233,7 @@
         <example>${cqex:getNavTitle(page)}</example>
     </function>
     <function>
-        <description>Gets the page title, falling back on the following methods:
+        <description>Gets the page title, falling back on the following methods.
             &lt;ul&gt;
             &lt;li&gt;getPageTitle&lt;/li&gt;
             &lt;li&gt;getTitle&lt;/li&gt;
@@ -224,7 +253,8 @@
             * java.lang.String key: the key for the value to retrieve
             * java.lang.Object defaultValue: the default value, if no value is retrieved, this value is
             returned
-            Return: 
+            Return: the value of the property matching the key or the default value
+            if no valid value is retrieved
         </description>
         <name>getProperty</name>
         <function-class>com.sixdimensions.wcm.cq.cqex.functions.SlingFunctions</function-class>
@@ -243,13 +273,14 @@
         <example>${cqex:hasChild(resource,path)}</example>
     </function>
     <function>
-        <description>Converts the specified path into a link based on the following rules:
+        <description>Converts the specified path into a link based on the following rules.
             &lt;ul&gt;
-            &lt;li&gt;if the path starts with 'http' use the path as is&lt;/li&gt;
+            &lt;li&gt;if the path starts with http, mailto, or # use the path as is&lt;/li&gt;
             &lt;li&gt;if the path contains '.' use the path as is&lt;/li&gt;
             &lt;li&gt;otherwise append '.html'&lt;/li&gt;
             &lt;/ul&gt;
-            * java.lang.String path: null
+            * java.lang.String path: the JCR path to convert to a link
+            Return: the link from the path
         </description>
         <name>toLink</name>
         <function-class>com.sixdimensions.wcm.cq.cqex.functions.PathFunctions</function-class>

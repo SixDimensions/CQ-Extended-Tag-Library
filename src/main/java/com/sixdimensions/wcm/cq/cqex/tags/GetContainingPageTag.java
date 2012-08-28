@@ -1,5 +1,18 @@
 /*
  * Copyright 2012 - Six Dimensions
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 package com.sixdimensions.wcm.cq.cqex.tags;
 
@@ -18,7 +31,8 @@ import com.day.cq.wcm.api.PageManager;
  * 
  * @author dklco
  */
-@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getContainingPage var=\"page\" path=\"/content/geometrixxx/en/jcr:content\" />")
+@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getContainingPage "
+		+ "var=\"page\" path=\"/content/geometrixxx/en/jcr:content\" />")
 public class GetContainingPageTag extends AttributeSettingTag {
 	private static final long serialVersionUID = 2906794811653608479L;
 	private static final Logger log = LoggerFactory
@@ -40,11 +54,12 @@ public class GetContainingPageTag extends AttributeSettingTag {
 	public int doEndTag() throws JspException {
 		log.trace("doEndTag");
 
-		PageManager pageMgr = (PageManager) this.pageContext
+		final PageManager pageMgr = (PageManager) this.pageContext
 				.getAttribute("pageManager");
 
 		if (pageMgr != null) {
-			this.setAttribute(this.var, pageMgr.getContainingPage(this.path));
+			this.setAttribute(this.getVar(),
+					pageMgr.getContainingPage(this.path));
 		} else {
 			log.error("Page manager not found");
 		}
@@ -69,7 +84,7 @@ public class GetContainingPageTag extends AttributeSettingTag {
 	 * @param path
 	 *            the path of the page to retrieve
 	 */
-	public void setPath(String path) {
+	public void setPath(final String path) {
 		this.path = path;
 	}
 }
