@@ -70,7 +70,7 @@ public class GetAssetTag extends AttributeSettingTag {
 
 			this.setAttribute(this.getVar(), asset);
 		} else {
-			log.warn("Resource is null");
+			log.warn("Unable to retrieve asset, resource is null");
 		}
 
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;

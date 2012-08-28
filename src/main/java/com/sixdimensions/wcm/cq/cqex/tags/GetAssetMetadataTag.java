@@ -59,10 +59,14 @@ public class GetAssetMetadataTag extends AttributeSettingTag {
 	public int doEndTag() throws JspException {
 		log.trace("doEndTag");
 
-		log.debug("Retrieving metadata from asset: " + this.asset.getPath());
-		final String value = this.asset.getMetadataValue(this.key);
+		if (this.asset != null) {
+			log.debug("Retrieving metadata from asset: " + this.asset.getPath());
+			final String value = this.asset.getMetadataValue(this.key);
 
-		this.setAttribute(this.getVar(), value);
+			this.setAttribute(this.getVar(), value);
+		} else {
+			log.warn("Unable to retrieve Metadata Asset is null");
+		}
 
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
