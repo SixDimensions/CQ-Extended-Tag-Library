@@ -57,16 +57,21 @@ public class GetAssetTag extends AttributeSettingTag {
 	public int doEndTag() throws JspException {
 		log.trace("doEndTag");
 
-		log.debug("Retrieving asset from resource: " + this.resource.getPath());
-		final Asset asset = DamUtil.resolveToAsset(this.resource);
-		if (asset != null) {
-			log.debug("Retrieved asset: " + asset.getPath());
-		} else {
-			log.warn("No asset retrieved from resource: "
+		if (this.resource != null) {
+			log.debug("Retrieving asset from resource: "
 					+ this.resource.getPath());
-		}
+			final Asset asset = DamUtil.resolveToAsset(this.resource);
+			if (asset != null) {
+				log.debug("Retrieved asset: " + asset.getPath());
+			} else {
+				log.warn("No asset retrieved from resource: "
+						+ this.resource.getPath());
+			}
 
-		this.setAttribute(this.getVar(), asset);
+			this.setAttribute(this.getVar(), asset);
+		} else {
+			log.warn("Resource is null");
+		}
 
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
