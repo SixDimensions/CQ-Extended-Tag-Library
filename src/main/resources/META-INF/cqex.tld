@@ -27,14 +27,15 @@
         <tag-class>com.sixdimensions.wcm.cq.cqex.tags.GetAssetTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
-            <description>The page context variable to save the value.</description>
-            <name>var</name>
+            <description>The resource to use to retrieve the asset.</description>
+            <name>resource</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <description>The resource to use to retrieve the asset.</description>
-            <name>resource</name>
+            <description>The page context variable to save the value.</description>
+            <name>var</name>
+            <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
@@ -45,6 +46,38 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <example>&amp;lt;cqex:getAsset var="asset" resource="${resource}" /&gt;</example>
+    </tag>
+    <tag>
+        <description>Retrieves a metadata attribute from the specified asset.</description>
+        <name>getAssetMetadata</name>
+        <tag-class>com.sixdimensions.wcm.cq.cqex.tags.GetAssetMetadataTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>The resource to use to retrieve the asset.</description>
+            <name>asset</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The resource to use to retrieve the asset.</description>
+            <name>key</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The page context variable to save the value.</description>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>The scope in which to save the attribute. May be either one of page or
+                request.
+            </description>
+            <name>scope</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <example>&amp;lt;cqex:getAssetMetadata asset="asset" key="dc:title" /&gt;</example>
     </tag>
     <tag>
         <description>Tag that retrieves the page at or containing the specified path.</description>
