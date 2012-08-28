@@ -5,7 +5,12 @@
 		<author email="dan.klco@sixdimensions.com">Dan Klco</author>
 	</properties>
 	<body>
-		<release version="0.0.6" date="2012-08-25" description="Current Release">
+		<release version="0.0.7" date="2012-08-28" description="Current Release">
+			<action dev="Dan Klco" type="add">
+				Added tag for getting asset metadata
+			</action>
+		</release>
+		<release version="0.0.6" date="2012-08-25" description="">
 			<action dev="Dan Klco" type="add">
 				Added tag for getting assets
 			</action>
