@@ -9,6 +9,9 @@
 			<action dev="Dan Klco" type="add">
 				Added tag for getting asset metadata
 			</action>
+			<action dev="Dan Klco" type="fix">
+				Cleaned up documentation, moved TLD docs into the overall site
+			</action>
 		</release>
 		<release version="0.0.6" date="2012-08-25" description="">
 			<action dev="Dan Klco" type="add">
