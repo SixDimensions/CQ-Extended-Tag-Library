@@ -1,5 +1,18 @@
 /*
  * Copyright 2012 - Six Dimensions
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 package com.sixdimensions.wcm.cq.cqex.functions;
 
@@ -29,11 +42,12 @@ public class SlingFunctions {
 	 * @param defaultValue
 	 *            the default value, if no value is retrieved, this value is
 	 *            returned
-	 * @return
+	 * @return the value of the property matching the key or the default value
+	 *         if no valid value is retrieved
 	 */
 	@Function(example = "${cqex:getProperty(properties, key, defaultValue)}")
-	public static Object getProperty(ValueMap properties, String key,
-			Object defaultValue) {
+	public static Object getProperty(final ValueMap properties,
+			final String key, final Object defaultValue) {
 		log.trace("getProperty");
 		Object value = null;
 		if (defaultValue != null) {
@@ -54,8 +68,16 @@ public class SlingFunctions {
 	 * @return true if there is a child at the specified path, false otherwise
 	 */
 	@Function(example = "${cqex:hasChild(resource,path)}")
-	public static boolean hasChild(Resource resource, String path) {
+	public static boolean hasChild(final Resource resource, final String path) {
 		log.trace("hasChild");
 		return resource.getChild(path) != null;
+	}
+
+	/**
+	 * Do not invoke the default constructor.
+	 */
+	protected SlingFunctions() {
+		// prevents calls from subclass
+		throw new UnsupportedOperationException();
 	}
 }

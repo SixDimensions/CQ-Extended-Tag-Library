@@ -1,5 +1,18 @@
 /*
  * Copyright 2012 - Six Dimensions
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 package com.sixdimensions.wcm.cq.cqex.tags;
 
@@ -23,7 +36,8 @@ import org.tldgen.annotations.Tag;
  * 
  * @author dklco
  */
-@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getProperties var=\"properties\" path=\"jcr:content/myNode\" resource=\"${resource}\" />")
+@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getProperties "
+		+ "var=\"properties\" path=\"jcr:content/myNode\" resource=\"${resource}\" />")
 public class GetPropertiesTag extends AttributeSettingTag {
 	private static final Logger log = LoggerFactory
 			.getLogger(GetPropertiesTag.class);
@@ -43,7 +57,7 @@ public class GetPropertiesTag extends AttributeSettingTag {
 	 * path will be retrieved.
 	 */
 	@Attribute
-	private Resource resource;
+	private transient Resource resource;
 
 	/*
 	 * (non-Javadoc)
@@ -55,7 +69,7 @@ public class GetPropertiesTag extends AttributeSettingTag {
 		log.trace("doEndTag");
 
 		Map<?, ?> properties = null;
-		SlingHttpServletRequest request = (SlingHttpServletRequest) this.pageContext
+		final SlingHttpServletRequest request = (SlingHttpServletRequest) this.pageContext
 				.getRequest();
 
 		Resource rsrc = null;
@@ -77,7 +91,7 @@ public class GetPropertiesTag extends AttributeSettingTag {
 				&& !rsrc.getResourceType().equals(
 						Resource.RESOURCE_TYPE_NON_EXISTING)) {
 			properties = rsrc.adaptTo(ValueMap.class);
-			this.setAttribute(this.var, properties);
+			this.setAttribute(this.getVar(), properties);
 		} else {
 			log.debug("Resource not found at path: " + this.path);
 		}
@@ -109,7 +123,7 @@ public class GetPropertiesTag extends AttributeSettingTag {
 	 * @param path
 	 *            the path of the resource to retrieve
 	 */
-	public void setPath(String path) {
+	public void setPath(final String path) {
 		this.path = path;
 	}
 
@@ -119,7 +133,7 @@ public class GetPropertiesTag extends AttributeSettingTag {
 	 * @param resource
 	 *            the resource from which to retrieve the properties
 	 */
-	public void setResource(Resource resource) {
+	public void setResource(final Resource resource) {
 		this.resource = resource;
 	}
 }

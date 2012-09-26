@@ -1,0 +1,10 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#tld-iframe').load(function () {
+	    $(this).height($(this).contents().height());
+	    $(this).width($(this).contents().width());
+		_gaq.push(['_trackPageview', $(this).contents().get(0).location.pathname]);
+	});
+});
+</script>
+<iframe id="tld-iframe" src="doc/index.html" frameborder="0" scroll="auto" width="800" height="800"></iframe> 

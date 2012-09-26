@@ -1,5 +1,18 @@
 /*
  * Copyright 2012 - Six Dimensions
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 package com.sixdimensions.wcm.cq.cqex.tags;
 
@@ -31,13 +44,13 @@ public class ListChildrenTag extends AttributeSettingTag {
 	 * specified.
 	 */
 	@Attribute
-	private Page page;
+	private transient Page page;
 	/**
 	 * The resource to list the children of, either this or the page must be
 	 * specified.
 	 */
 	@Attribute
-	private Resource resource;
+	private transient Resource resource;
 
 	/*
 	 * (non-Javadoc)
@@ -58,7 +71,7 @@ public class ListChildrenTag extends AttributeSettingTag {
 		} else {
 			log.debug("No/null resource specified");
 		}
-		this.setAttribute(this.var, children);
+		this.setAttribute(this.getVar(), children);
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
 
@@ -83,20 +96,20 @@ public class ListChildrenTag extends AttributeSettingTag {
 	/**
 	 * Set the page to list the children of.
 	 * 
-	 * @param page
+	 * @param currentPage
 	 *            the page
 	 */
-	public void setPage(Page page) {
-		this.page = page;
+	public void setPage(final Page currentPage) {
+		this.page = currentPage;
 	}
 
 	/**
-	 * Set the resource to list the children of
+	 * Set the resource to list the children of.
 	 * 
 	 * @param resource
 	 *            the resource
 	 */
-	public void setResource(Resource resource) {
+	public void setResource(final Resource resource) {
 		this.resource = resource;
 	}
 }

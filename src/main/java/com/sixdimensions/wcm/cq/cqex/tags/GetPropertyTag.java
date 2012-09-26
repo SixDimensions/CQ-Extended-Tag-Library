@@ -1,5 +1,18 @@
 /*
  * Copyright 2012 - Six Dimensions
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 package com.sixdimensions.wcm.cq.cqex.tags;
 
@@ -18,7 +31,8 @@ import org.tldgen.annotations.Tag;
  * 
  * @author dklco
  */
-@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getProperty var=\"prop\" key=\"myProp\" properties=\"${properties}\" defaultValue=\"Default\"/>")
+@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getProperty var=\"prop\" key=\"myProp\" "
+		+ "properties=\"${properties}\" defaultValue=\"Default\"/>")
 public class GetPropertyTag extends AttributeSettingTag {
 	private static final Logger log = LoggerFactory
 			.getLogger(GetPropertyTag.class);
@@ -31,13 +45,13 @@ public class GetPropertyTag extends AttributeSettingTag {
 	private Object defaultValue;
 
 	/**
-	 * The key of the attribute to retrieve
+	 * The key of the attribute to retrieve.
 	 */
 	@Attribute(required = true)
 	private String key;
 
 	/**
-	 * The ValueMap from which to retrieve the values
+	 * The ValueMap from which to retrieve the values.
 	 */
 	@Attribute(required = true)
 	private ValueMap properties;
@@ -57,7 +71,7 @@ public class GetPropertyTag extends AttributeSettingTag {
 		} else {
 			value = this.properties.get(this.key);
 		}
-		this.setAttribute(this.var, value);
+		this.setAttribute(this.getVar(), value);
 		return javax.servlet.jsp.tagext.Tag.EVAL_PAGE;
 	}
 
@@ -89,22 +103,22 @@ public class GetPropertyTag extends AttributeSettingTag {
 	}
 
 	/**
-	 * Set the default value
+	 * Set the default value.
 	 * 
 	 * @param defaultValue
 	 *            the default value
 	 */
-	public void setDefaultValue(String defaultValue) {
+	public void setDefaultValue(final String defaultValue) {
 		this.defaultValue = defaultValue;
 	}
 
 	/**
-	 * Sets the key
+	 * Sets the key.
 	 * 
 	 * @param key
 	 *            the key
 	 */
-	public void setKey(String key) {
+	public void setKey(final String key) {
 		this.key = key;
 	}
 
@@ -114,7 +128,7 @@ public class GetPropertyTag extends AttributeSettingTag {
 	 * @param properties
 	 *            the properties
 	 */
-	public void setProperties(ValueMap properties) {
+	public void setProperties(final ValueMap properties) {
 		this.properties = properties;
 	}
 }
