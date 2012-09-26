@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<version>0.0.7-SNAPSHOT</version>
@@ -94,7 +95,7 @@
 						<docletArtifact>
 							<groupId>org.extrema-sistemas</groupId>
 							<artifactId>tldgen</artifactId>
-							<version>1.3</version>
+							<version>1.4.1</version>
 						</docletArtifact>
 					</docletArtifacts>
 					<show>private</show>
@@ -115,6 +116,19 @@
 					<useStandardDocletOptions>true</useStandardDocletOptions>
 					<author>false</author>
 					<encoding>utf-8</encoding>
+					<header>
+		                    &lt;script type="text/javascript"&gt;
+		                      var _gaq = _gaq || [];
+		                      _gaq.push(['_setAccount', 'UA-30089059-2']);
+		                      _gaq.push(['_trackPageview']);
+		
+		                      (function() {
+		                        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		                        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		                      })();
+		                    &lt;/script&gt;
+					</header>
 				</configuration>
 				<executions>
 					<execution>
@@ -205,7 +219,22 @@
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-javadoc-plugin</artifactId>
-							<version>2.6.1</version>
+							<version>2.9</version>
+							<configuration>
+								<header>
+					                    &lt;script type="text/javascript"&gt;
+					                      var _gaq = _gaq || [];
+					                      _gaq.push(['_setAccount', 'UA-30089059-2']);
+					                      _gaq.push(['_trackPageview']);
+					
+					                      (function() {
+					                        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+					                        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+					                      })();
+					                    &lt;/script&gt;
+								</header>
+							</configuration>
 						</plugin>
 					</reportPlugins>
 				</configuration>
@@ -219,7 +248,8 @@
 						<phase>package</phase>
 						<configuration>
 							<target>
-								<copy toDir="target/site" file="target/${project.artifactId}-${project.version}.jar" />
+								<copy toDir="target/site"
+									file="target/${project.artifactId}-${project.version}.jar" />
 							</target>
 						</configuration>
 						<goals>
@@ -347,7 +377,7 @@
 		<dependency>
 			<groupId>org.extrema-sistemas</groupId>
 			<artifactId>tldgen</artifactId>
-			<version>1.4.0</version>
+			<version>1.4.1</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>tools</artifactId>
@@ -368,17 +398,17 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-            <groupId>com.day.cq.dam</groupId>
-            <artifactId>cq-dam-api</artifactId>
-            <version>5.5.6</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq.dam</groupId>
-            <artifactId>cq-dam-commons</artifactId>
-            <version>5.5.8</version>
-            <scope>provided</scope>
-        </dependency>
+			<groupId>com.day.cq.dam</groupId>
+			<artifactId>cq-dam-api</artifactId>
+			<version>5.5.6</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.day.cq.dam</groupId>
+			<artifactId>cq-dam-commons</artifactId>
+			<version>5.5.8</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<repositories>
