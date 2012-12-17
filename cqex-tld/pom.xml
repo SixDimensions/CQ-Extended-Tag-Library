@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<version>0.0.8-SNAPSHOT</version>
@@ -10,7 +11,7 @@
 	<name>CQ Extended Tag Library</name>
 	<description>Extended TagLibrary for Adobe CQ5, exposes commonly used actions as tags.</description>
 
-	<url>http://cqex-tld.6dlabs.com</url>
+	<url>https://github.com/SixDimensions/cqex-tld</url>
 	<inceptionYear>2012</inceptionYear>
 	<organization>
 		<name>Six Dimensions</name>
@@ -18,14 +19,10 @@
 	</organization>
 
 	<distributionManagement>
-		<site>
-			<id>cqex-tld.6dlabs.com</id>
-			<url>scp://www.6dlabs.com/var/www/vhosts/cqex-tld/htdocs/</url>
-		</site>
 		<repository>
-			<id>download-site</id>
-			<name>Download Site</name>
-			<url>file:///var/www/vhosts/cqex-tld/htdocs/download</url>
+			<id>box</id>
+			<name>Box</name>
+			<url>file:///Users/Six Dimensions/Documents/My Box Files/Six Dimensions/6D Labs/Releases</url>
 		</repository>
 	</distributionManagement>
 
@@ -42,14 +39,15 @@
 		</license>
 	</licenses>
 	<scm>
-		<url>http://sourcecontrol.6dlabs.com/svn/sandbox/cqex-tld/trunk/cqex-tld</url>
-		<developerConnection>scm:svn:http://sourcecontrol.6dlabs.com/svn/sandbox/cqex-tld/trunk/cqex-tld</developerConnection>
-		<connection>scm:svn:http://sourcecontrol.6dlabs.com/svn/sandbox/cqex-tld/trunk/cqex-tld</connection>
+		<url>https://github.com/SixDimensions/cqex-tld.git</url>
+		<developerConnection>scm:git:https://github.com/SixDimensions/cqex-tld.git</developerConnection>
+		<connection>scm:git:https://github.com/SixDimensions/cqex-tld.git</connection>
 	</scm>
 
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<github.global.server>github</github.global.server>
 	</properties>
 
 	<build>
@@ -116,18 +114,24 @@
 					<author>false</author>
 					<encoding>utf-8</encoding>
 					<header>
-		                    &lt;script type="text/javascript"&gt;
-		                      var _gaq = _gaq || [];
-		                      _gaq.push(['_setAccount', 'UA-30089059-2']);
-		                      _gaq.push(['_trackPageview']);
-		
-		                      (function() {
-		                        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		                        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		                      })();
-		                    &lt;/script&gt;
-					</header>
+						&lt;script type="text/javascript"&gt;
+						var _gaq = _gaq || [];
+						_gaq.push(['_setAccount', 'UA-30089059-2']);
+						_gaq.push(['_trackPageview']);
+
+						(function() {
+						var ga =
+						document.createElement('script'); ga.type =
+						'text/javascript';
+						ga.async = true;
+						ga.src = ('https:' == document.location.protocol ?
+						'https://ssl' :
+						'http://www') + '.google-analytics.com/ga.js';
+						var s
+						= document.getElementsByTagName('script')[0];
+						s.parentNode.insertBefore(ga, s);
+						})();
+						&lt;/script&gt; </header>
 				</configuration>
 				<executions>
 					<execution>
@@ -178,13 +182,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.0</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.wagon</groupId>
-						<artifactId>wagon-ssh</artifactId>
-						<version>1.0-beta-7</version>
-					</dependency>
-				</dependencies>
 				<configuration>
 					<reportPlugins>
 						<plugin>
@@ -221,18 +218,26 @@
 							<version>2.9</version>
 							<configuration>
 								<header>
-					                    &lt;script type="text/javascript"&gt;
-					                      var _gaq = _gaq || [];
-					                      _gaq.push(['_setAccount', 'UA-30089059-2']);
-					                      _gaq.push(['_trackPageview']);
-					
-					                      (function() {
-					                        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-					                        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-					                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-					                      })();
-					                    &lt;/script&gt;
-								</header>
+									&lt;script type="text/javascript"&gt;
+									var _gaq = _gaq ||
+									[];
+									_gaq.push(['_setAccount', 'UA-30089059-2']);
+									_gaq.push(['_trackPageview']);
+
+									(function() {
+									var ga =
+									document.createElement('script'); ga.type =
+									'text/javascript';
+									ga.async = true;
+									ga.src = ('https:' ==
+									document.location.protocol ? 'https://ssl' :
+									'http://www') +
+									'.google-analytics.com/ga.js';
+									var s =
+									document.getElementsByTagName('script')[0];
+									s.parentNode.insertBefore(ga, s);
+									})();
+									&lt;/script&gt; </header>
 							</configuration>
 						</plugin>
 					</reportPlugins>
@@ -247,12 +252,29 @@
 						<phase>package</phase>
 						<configuration>
 							<target>
-								<copy toDir="target/site" file="target/${project.artifactId}-${project.version}.jar" />
+								<copy toDir="target/site"
+									file="target/${project.artifactId}-${project.version}.jar" />
 							</target>
 						</configuration>
 						<goals>
 							<goal>run</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.6</version>
+				<configuration>
+					<message>Creating site for ${project.version}</message>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>site</phase>
 					</execution>
 				</executions>
 			</plugin>
