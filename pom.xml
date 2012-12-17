@@ -338,9 +338,7 @@
 
 	<profiles>
 		<profile>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
+			<id>install</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -359,11 +357,6 @@
 						</configuration>
 					</plugin>
 				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>release</id>
-			<build>
 			</build>
 		</profile>
 	</profiles>
