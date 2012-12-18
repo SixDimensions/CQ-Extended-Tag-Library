@@ -39,9 +39,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<url>https://github.com/SixDimensions/cqex-tld.git</url>
-		<developerConnection>scm:git:https://github.com/SixDimensions/cqex-tld.git</developerConnection>
-		<connection>scm:git:https://github.com/SixDimensions/cqex-tld.git</connection>
+		<url>git@github.com:SixDimensions/cqex-tld.git</url>
+		<developerConnection>scm:git:git@github.com:SixDimensions/cqex-tld.git</developerConnection>
+		<connection>scm:git:git@github.com:SixDimensions/cqex-tld.git</connection>
 	</scm>
 
 
