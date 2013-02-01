@@ -80,7 +80,7 @@ public class GetPropertiesTag extends AttributeSettingTag {
 		} else if ((this.resource != null) && StringUtils.isEmpty(this.path)) {
 			log.trace("Using resource: " + this.resource.getPath());
 			rsrc = this.resource;
-		} else if (this.path.startsWith("/")) {
+		} else if ((this.path != null) && this.path.startsWith("/")) {
 			log.trace("Finding resource at absolute path: " + this.path);
 			rsrc = request.getResourceResolver().getResource(this.path);
 		} else {
