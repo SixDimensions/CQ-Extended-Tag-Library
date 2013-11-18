@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<version>0.0.13-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
 	<groupId>com.sixdimensions.wcm.cq</groupId>
-	<artifactId>cqex-tld</artifactId>
+	<artifactId>com.sixdimensions.wcm.cq.taglib.ext</artifactId>
 	<name>CQ Extended Tag Library</name>
 	<description>Extended TagLibrary for Adobe CQ5, exposes commonly used actions as tags.</description>
 
@@ -86,31 +87,6 @@
 					<includes>
 						<include>**</include>
 					</includes>
-					<doclet>org.tldgen.TldDoclet</doclet>
-					<docletArtifacts>
-						<docletArtifact>
-							<groupId>org.extrema-sistemas</groupId>
-							<artifactId>tldgen</artifactId>
-							<version>1.4.1</version>
-						</docletArtifact>
-					</docletArtifacts>
-					<show>private</show>
-					<additionalparam>
-						-displayName 'CQ Extended Taglib'
-						-uri
-						http://www.6dlabs.com/cqex/1.0
-						-name cqex
-						-htmlFolder
-						${basedir}/target/site/doc
-						-tldFolder
-						${basedir}/src/main/resources/META-INF
-						-license APACHE
-						-charset
-						UTF-8
-						-doctitle 'CQ Extended Taglibs'
-					</additionalparam>
-					<useStandardDocletOptions>true</useStandardDocletOptions>
-					<author>false</author>
 					<encoding>utf-8</encoding>
 					<header>
 						&lt;script type="text/javascript"&gt;
@@ -251,7 +227,8 @@
 						<phase>package</phase>
 						<configuration>
 							<target>
-								<copy toDir="target/site" file="target/${project.artifactId}-${project.version}.jar" />
+								<copy toDir="target/site"
+									file="target/${project.artifactId}-${project.version}.jar" />
 							</target>
 						</configuration>
 						<goals>
@@ -364,11 +341,13 @@
 			<groupId>org.apache.sling</groupId>
 			<artifactId>org.apache.sling.api</artifactId>
 			<version>2.2.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.felix</groupId>
 			<artifactId>org.apache.felix.scr.annotations</artifactId>
 			<version>1.6.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -379,22 +358,13 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jsp-api</artifactId>
 			<version>2.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.extrema-sistemas</groupId>
-			<artifactId>tldgen</artifactId>
-			<version>1.4.1</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>tools</artifactId>
-					<groupId>com.sun</groupId>
-				</exclusion>
-			</exclusions>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.day.cq.wcm</groupId>
@@ -411,14 +381,45 @@
 		<dependency>
 			<groupId>com.day.cq.dam</groupId>
 			<artifactId>cq-dam-api</artifactId>
-			<version>5.5.6</version>
+			<version>5.5.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.day.cq.dam</groupId>
 			<artifactId>cq-dam-commons</artifactId>
-			<version>5.5.8</version>
+			<version>5.5.0</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.day.commons</groupId>
+			<artifactId>day-commons-text</artifactId>
+			<version>1.1.8</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.day.cq.wcm</groupId>
+			<artifactId>cq-wcm-taglib</artifactId>
+			<version>5.5.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.adobe.granite</groupId>
+			<artifactId>com.adobe.granite.xssprotection</artifactId>
+			<version>5.5.24</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.tld-generator</groupId>
+			<artifactId>tld-generator</artifactId>
+			<version>1.1</version>
+			<scope>compile</scope>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 

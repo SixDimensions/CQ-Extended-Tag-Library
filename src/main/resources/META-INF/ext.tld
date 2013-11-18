@@ -1,0 +1,229 @@
+<!-- Copyright 2013 - Six Dimensions All Rights Reserved -->
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+	<display-name>Extended Taglib</display-name>
+	<tlib-version>2.0</tlib-version>
+	<short-name>ext</short-name>
+	<uri>http://labs.sixdimensions.com/tld/ext</uri>
+
+	<!-- Expression Language Functions -->
+	<function>
+		<name>escapeSelector</name>
+		<function-class>com.sixdimensions.wcm.cq.bootstrap.taglib.Functions</function-class>
+		<function-signature>java.lang.String escapeSelector(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>getInherited</name>
+		<function-class>com.sixdimensions.wcm.cq.bootstrap.taglib.Functions</function-class>
+		<function-signature>java.lang.Object getInherited(com.day.cq.commons.inherit.InheritanceValueMap,java.lang.String,java.lang.Object)</function-signature>
+	</function>
+	<function>
+		<name>getPage</name>
+		<function-class>com.sixdimensions.wcm.cq.bootstrap.taglib.Functions</function-class>
+		<function-signature>com.day.cq.wcm.api.Page getPage(com.day.cq.wcm.api.PageManager,java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>getTitle</name>
+		<function-class>com.sixdimensions.wcm.cq.bootstrap.taglib.Functions</function-class>
+		<function-signature>java.lang.String getTitle(com.day.cq.wcm.api.Page,java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>getUniqueId</name>
+		<function-class>com.sixdimensions.wcm.cq.bootstrap.taglib.Functions</function-class>
+		<function-signature>java.lang.String getUniqueId(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<name>listPages</name>
+		<function-class>com.sixdimensions.wcm.cq.bootstrap.taglib.Functions</function-class>
+		<function-signature>java.util.Iterator listPages(com.day.cq.wcm.api.Page,java.lang.Boolean)</function-signature>
+	</function>
+
+	<!-- Tags -->
+	<tag>
+		<name>defer</name>
+		<description>Defers the writing of HTML until a WriteDeferred tag is evaluated</description>
+		<tag-class>com.sixdimensions.wcm.cq.bootstrap.taglib.DeferTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<description>The id of the content block, ensures content is only written once</description>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>displayMode</name>
+		<description>
+			Displays the contents of the tag only if the current WCMMode matches a 
+			list of display modes or is not in a list of hide modes.  One of either 
+			the display or hide modes must be specified.
+		</description>
+		<tag-class>com.sixdimensions.wcm.cq.bootstrap.taglib.DisplayModeTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<description>A comma separate list of valid modes in which to display the contents</description>
+			<name>displayModes</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>A comma separate list of valid modes in which to display the contents</description>
+			<name>hideModes</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>externalize</name>
+		<description>Externalizes paths into absolute, relative and author URLs</description>
+		<tag-class>com.sixdimensions.wcm.cq.bootstrap.taglib.ExternalizeTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>The externalization mode, should be one of 'author', 'absolute' or 'relative', relative is the default</description>
+			<name>mode</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The path to externalize</description>
+			<name>path</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The variable in which to save the externalized path</description>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<description>
+			Includes a resource rendering into the current page if in author mode and uses a SSI include in publish mode
+		</description>
+		<name>ssiInclude</name>
+		<tag-class>com.sixdimensions.wcm.cq.bootstrap.taglib.SSIIncludeTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>
+				Whether or not to add the cache selector to the SSI URL
+			</description>
+			<name>cache</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+		<attribute>
+			<description>
+				Whether to flush the output before including the target
+			</description>
+			<name>flush</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+		<attribute>
+			<description>
+				The resource object to include in the current request
+				processing. Either resource or path must be specified. If
+				both are specified, the resource takes precedences.
+			</description>
+			<name>resource</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>org.apache.sling.api.resource.Resource</type>
+		</attribute>
+		<attribute>
+			<description>
+				The path to the resource object to include in the
+				current request processing. If this path is relative it is
+				appended to the path of the current resource whose
+				script is including the given resource. Either resource
+				or path must be specified. If both are specified, the
+				resource takes precedences.
+			</description>
+			<name>path</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>
+				The resource type of a resource to include. If the
+				resource to be included is specified with the path attribute,
+				which cannot be resolved to a resource, the tag may
+				create a synthetic resource object out of the path and
+				this resource type. If the resource type is set the path
+				must be the exact path to a resource object. That is,
+				adding parameters, selectors and extensions to the
+				path is not supported if the resource type is set.
+			</description>
+			<name>resourceType</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>
+				When dispatching, replace selectors by the value
+				provided by this option.
+			</description>
+			<name>replaceSelectors</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>
+				When dispatching, add the value provided by this option
+				to the selectors.
+			</description>
+			<name>addSelectors</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>
+				When dispatching, replace the suffix by the value
+				provided by this option.
+			</description>
+			<name>replaceSuffix</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>writeDeferred</name>
+		<description>Writes the HTML deferred by the defer tag</description>
+		<tag-class>com.sixdimensions.wcm.cq.bootstrap.taglib.WriteDeferredTag</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+	<tag>
+		<name>xssEncode</name>
+		<description>Tag for XSS safe encoding arbitrary text for HTML, XML and JS</description>
+		<tag-class>com.sixdimensions.wcm.cq.bootstrap.taglib.XSSEncodeTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>
+				The encoding type to use for the value
+			</description>
+			<name>type</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>
+				The text to encode
+			</description>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>
+				The name of the page context variable in which to save the encoded content
+			</description>
+			<name>var</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

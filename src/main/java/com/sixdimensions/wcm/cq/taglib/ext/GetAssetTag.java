@@ -14,16 +14,17 @@
  * limitations under the License.
  *
  */
-package com.sixdimensions.wcm.cq.cqex.tags;
+package com.sixdimensions.wcm.cq.taglib.ext;
 
 import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.TagSupport;
 
 import org.apache.sling.api.resource.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tldgen.annotations.Attribute;
-import org.tldgen.annotations.BodyContent;
-import org.tldgen.annotations.Tag;
+
+import tldgen.Tag;
+import tldgen.TagAttribute;
 
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.commons.util.DamUtil;
@@ -35,9 +36,8 @@ import com.day.cq.dam.commons.util.DamUtil;
  * 
  * @author dklco
  */
-@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getAsset "
-		+ "var=\"asset\" resource=\"${resource}\" />")
-public class GetAssetTag extends AttributeSettingTag {
+@Tag
+public class GetAssetTag extends TagSupport {
 	private static final long serialVersionUID = -4882565776256570621L;
 	private static final Logger log = LoggerFactory
 			.getLogger(GetAssetTag.class);
@@ -45,8 +45,12 @@ public class GetAssetTag extends AttributeSettingTag {
 	/**
 	 * The resource to use to retrieve the asset.
 	 */
-	@Attribute(required = true)
 	private Resource resource;
+
+	/**
+	 * The variable name in which to save the value
+	 */
+	private String var;
 
 	/*
 	 * (non-Javadoc)
@@ -68,7 +72,7 @@ public class GetAssetTag extends AttributeSettingTag {
 						+ this.resource.getPath());
 			}
 
-			this.setAttribute(this.getVar(), asset);
+			this.pageContext.setAttribute(this.getVar(), asset);
 		} else {
 			log.warn("Unable to retrieve asset, resource is null");
 		}
@@ -86,13 +90,30 @@ public class GetAssetTag extends AttributeSettingTag {
 	}
 
 	/**
+	 * @return the var name
+	 */
+	public String getVar() {
+		return this.var;
+	}
+
+	/**
 	 * Set the resource from which to retrieve the asset.
 	 * 
 	 * @param resource
 	 *            the resource from which to retrieve the asset
 	 */
+	@TagAttribute(required = true)
 	public void setResource(final Resource resource) {
 		this.resource = resource;
+	}
+
+	/**
+	 * @param var
+	 *            the var name in which to set the value
+	 */
+	@TagAttribute(required = true)
+	public void setVar(final String var) {
+		this.var = var;
 	}
 
 }

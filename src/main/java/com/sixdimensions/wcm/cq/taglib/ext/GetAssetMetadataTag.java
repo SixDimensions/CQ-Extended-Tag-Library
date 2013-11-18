@@ -14,15 +14,16 @@
  * limitations under the License.
  *
  */
-package com.sixdimensions.wcm.cq.cqex.tags;
+package com.sixdimensions.wcm.cq.taglib.ext;
 
 import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.TagSupport;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tldgen.annotations.Attribute;
-import org.tldgen.annotations.BodyContent;
-import org.tldgen.annotations.Tag;
+
+import tldgen.Tag;
+import tldgen.TagAttribute;
 
 import com.day.cq.dam.api.Asset;
 
@@ -31,24 +32,26 @@ import com.day.cq.dam.api.Asset;
  * 
  * @author dklco
  */
-@Tag(bodyContent = BodyContent.EMPTY, example = "&lt;cqex:getAssetMetadata "
-		+ "asset=\"asset\" key=\"dc:title\" />")
-public class GetAssetMetadataTag extends AttributeSettingTag {
-	private static final long serialVersionUID = -4882565776256570621L;
+@Tag
+public class GetAssetMetadataTag extends TagSupport {
 	private static final Logger log = LoggerFactory
 			.getLogger(GetAssetMetadataTag.class);
+	private static final long serialVersionUID = -4882565776256570621L;
 
 	/**
 	 * The resource to use to retrieve the asset.
 	 */
-	@Attribute(required = true)
 	private Asset asset;
 
 	/**
-	 * The resource to use to retrieve the asset.
+	 * The property to retrieve from the asset metadata.
 	 */
-	@Attribute(required = true)
 	private String key;
+
+	/**
+	 * The variable name in which to save the asset metadata value
+	 */
+	private String var;
 
 	/*
 	 * (non-Javadoc)
@@ -63,7 +66,7 @@ public class GetAssetMetadataTag extends AttributeSettingTag {
 			log.debug("Retrieving metadata from asset: " + this.asset.getPath());
 			final String value = this.asset.getMetadataValue(this.key);
 
-			this.setAttribute(this.getVar(), value);
+			this.pageContext.setAttribute(this.getVar(), value);
 		} else {
 			log.warn("Unable to retrieve Metadata Asset is null");
 		}
@@ -90,11 +93,19 @@ public class GetAssetMetadataTag extends AttributeSettingTag {
 	}
 
 	/**
+	 * @return the var
+	 */
+	public String getVar() {
+		return this.var;
+	}
+
+	/**
 	 * Set the asset from which to retrieve the metadata.
 	 * 
 	 * @param asset
 	 *            the asset from which to retrieve the metadata
 	 */
+	@TagAttribute(required = true)
 	public void setAsset(final Asset asset) {
 		this.asset = asset;
 	}
@@ -105,8 +116,18 @@ public class GetAssetMetadataTag extends AttributeSettingTag {
 	 * @param key
 	 *            the key of the metadata value to retrieve
 	 */
+	@TagAttribute(required = true)
 	public void setKey(final String key) {
 		this.key = key;
+	}
+
+	/**
+	 * @param var
+	 *            the var to set
+	 */
+	@TagAttribute(required = true)
+	public void setVar(final String var) {
+		this.var = var;
 	}
 
 }

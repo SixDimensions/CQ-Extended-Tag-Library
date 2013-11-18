@@ -5,7 +5,15 @@
 		<author email="dan.klco@sixdimensions.com">Dan Klco</author>
 	</properties>
 	<body>
-		<release version="0.0.12" date="2012-12-18" description="Current Release">
+		<release version="0.1.0" date="2013-11-18" description="Current Release">
+			<action dev="Dan Klco" type="update">
+				Complete re-write, removing duplicate functionality due to donation to Apache Sling Project
+			</action>
+			<action dev="Dan Klco" type="fix">
+				Replacing tldgen with tld-generator as it was breaking builds on some systems
+			</action>
+		</release>
+		<release version="0.0.12" date="2012-12-18">
 			<action dev="Dan Klco" type="fix">
 				First successful release on GitHub
 			</action>
