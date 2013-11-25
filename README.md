@@ -1,9 +1,9 @@
-CQ Extended Taglibs
+CQ Extended Tag Library
 ========
 
-CQ Extended Taglibs is a library of tag and Expression Language functions for the Adobe CQ5 platform. These tags expose commonly used methods and utilities as JSP Tags and EL Functions.
+CQ Extended Taglibs is a library of tags and Expression Language functions for the Adobe CQ5/AEM platform. These tags expose commonly used methods and utilities as JSP Tags and EL Functions.
 
-[Documentation Site](http://sixdimensions.github.com/cqex-tld)
+[Documentation Site](http://sixdimensions.github.io/CQ-Extended-Tag-Library/)
 
 Copyright 2012 - Six Dimensions
 --------
