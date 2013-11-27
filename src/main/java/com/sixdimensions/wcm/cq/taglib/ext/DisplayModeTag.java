@@ -11,10 +11,6 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import tldgen.BodyContentType;
-import tldgen.Tag;
-import tldgen.TagAttribute;
-
 import com.day.cq.wcm.api.WCMMode;
 
 /**
@@ -24,7 +20,6 @@ import com.day.cq.wcm.api.WCMMode;
  * @author dklco
  * @see com.day.cq.wcm.api.WCMMode
  */
-@Tag(bodyContentType = BodyContentType.JSP)
 public class DisplayModeTag extends BodyTagSupport {
 
 	/**
@@ -117,7 +112,6 @@ public class DisplayModeTag extends BodyTagSupport {
 	 * @param modes
 	 *            the modes to set
 	 */
-	@TagAttribute(required = true)
 	public void setDisplayModes(final String modes) {
 		this.displayModes = modes;
 	}
@@ -126,7 +120,6 @@ public class DisplayModeTag extends BodyTagSupport {
 	 * @param hideModes
 	 *            the hideModes to set
 	 */
-	@TagAttribute(required = true)
 	public void setHideModes(final String hideModes) {
 		this.hideModes = hideModes;
 	}

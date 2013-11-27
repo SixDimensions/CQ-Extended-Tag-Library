@@ -9,8 +9,6 @@ import java.util.zip.CRC32;
 
 import org.apache.commons.lang.StringUtils;
 
-import tldgen.Function;
-
 import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageFilter;
@@ -32,7 +30,6 @@ public class Functions {
 	 *            the string to escape
 	 * @return the escaped string
 	 */
-	@Function
 	public static final String escapeSelector(final String string) {
 		return Text.escape(string.toLowerCase(), '-');
 	}
@@ -49,7 +46,6 @@ public class Functions {
 	 *            value
 	 * @return the value
 	 */
-	@Function
 	public static final Object getInherited(
 			final InheritanceValueMap properties, final String key,
 			final Object defaultOrType) {
@@ -79,7 +75,6 @@ public class Functions {
 	 *            the path of the page or a child resource of the page
 	 * @return the page at the path
 	 */
-	@Function
 	public static final Page getPage(final PageManager pm, final String path) {
 		return pm.getContainingPage(path);
 	}
@@ -94,7 +89,6 @@ public class Functions {
 	 *            default
 	 * @return
 	 */
-	@Function
 	public static final String getTitle(final Page page, final String type) {
 		String title = null;
 		if ("nav".equals(type)) {
@@ -118,7 +112,6 @@ public class Functions {
 	 *            the path for which to generate the id
 	 * @return the unique ID
 	 */
-	@Function
 	public static final String getUniqueId(final String path) {
 		final String name = path.substring(path.lastIndexOf("/") + 1);
 		final CRC32 hash = new CRC32();
@@ -135,7 +128,6 @@ public class Functions {
 	 *            whether or not to filter the child pages
 	 * @return the child pages
 	 */
-	@Function
 	public static final Iterator<Page> listChildPages(final Page page,
 			final boolean filter) {
 		return filter ? page.listChildren(new PageFilter()) : page

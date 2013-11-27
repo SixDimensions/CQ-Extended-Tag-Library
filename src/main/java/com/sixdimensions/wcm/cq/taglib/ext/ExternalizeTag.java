@@ -12,9 +12,6 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.scripting.SlingBindings;
 import org.apache.sling.api.scripting.SlingScriptHelper;
 
-import tldgen.Tag;
-import tldgen.TagAttribute;
-
 import com.day.cq.commons.Externalizer;
 
 /**
@@ -22,7 +19,6 @@ import com.day.cq.commons.Externalizer;
  * 
  * @author dklco
  */
-@Tag
 public class ExternalizeTag extends TagSupport {
 
 	/**
@@ -102,7 +98,6 @@ public class ExternalizeTag extends TagSupport {
 	 * @param mode
 	 *            the mode to set
 	 */
-	@TagAttribute(required = true)
 	public void setMode(final String mode) {
 		this.mode = mode;
 	}
@@ -111,7 +106,6 @@ public class ExternalizeTag extends TagSupport {
 	 * @param path
 	 *            the path to set
 	 */
-	@TagAttribute(required = true)
 	public void setPath(final String path) {
 		this.path = path;
 	}
@@ -120,7 +114,6 @@ public class ExternalizeTag extends TagSupport {
 	 * @param var
 	 *            the var to set
 	 */
-	@TagAttribute(required = true)
 	public void setVar(final String var) {
 		this.var = var;
 	}

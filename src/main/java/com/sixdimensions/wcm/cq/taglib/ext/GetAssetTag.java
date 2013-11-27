@@ -23,9 +23,6 @@ import org.apache.sling.api.resource.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import tldgen.Tag;
-import tldgen.TagAttribute;
-
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.commons.util.DamUtil;
 
@@ -36,7 +33,6 @@ import com.day.cq.dam.commons.util.DamUtil;
  * 
  * @author dklco
  */
-@Tag
 public class GetAssetTag extends TagSupport {
 	private static final long serialVersionUID = -4882565776256570621L;
 	private static final Logger log = LoggerFactory
@@ -102,16 +98,14 @@ public class GetAssetTag extends TagSupport {
 	 * @param resource
 	 *            the resource from which to retrieve the asset
 	 */
-	@TagAttribute(required = true)
 	public void setResource(final Resource resource) {
 		this.resource = resource;
 	}
 
 	/**
 	 * @param var
-	 *            the var name in which to set the value
+	 *            the var name in which to set the asset
 	 */
-	@TagAttribute(required = true)
 	public void setVar(final String var) {
 		this.var = var;
 	}

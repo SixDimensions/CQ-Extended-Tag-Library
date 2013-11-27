@@ -15,15 +15,12 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import tldgen.Tag;
-
 /**
  * The WriteDeferred Tag writes all of the HTML deferred by the Defer Tag.
  * 
  * @author dklco
  * @see com.sixdimensions.wcm.cq.taglib.ext.DeferTag
  */
-@Tag
 public class WriteDeferredTag extends TagSupport {
 
 	/**

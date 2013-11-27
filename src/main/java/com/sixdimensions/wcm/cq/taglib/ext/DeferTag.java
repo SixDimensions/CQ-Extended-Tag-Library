@@ -16,10 +16,6 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import tldgen.BodyContentType;
-import tldgen.Tag;
-import tldgen.TagAttribute;
-
 /**
  * The Defer Tag defers the writing of HTML until a WriteDeferred Tag is found.
  * Usually this is before the closing of the body tag. It allows the
@@ -29,7 +25,6 @@ import tldgen.TagAttribute;
  * 
  * @author dklco
  */
-@Tag(bodyContentType = BodyContentType.JSP)
 public class DeferTag extends BodyTagSupport {
 
 	/**
@@ -77,7 +72,8 @@ public class DeferTag extends BodyTagSupport {
 				log.warn("Encountered IO Exception copying body content", e);
 			}
 		} else {
-			log.debug("Deferred content for id {} already added", this.contentId);
+			log.debug("Deferred content for id {} already added",
+					this.contentId);
 		}
 		return SKIP_BODY;
 	}
@@ -93,7 +89,6 @@ public class DeferTag extends BodyTagSupport {
 	 * @param id
 	 *            the id to set
 	 */
-	@TagAttribute(required = true)
 	public void setContentId(final String id) {
 		this.contentId = id;
 	}

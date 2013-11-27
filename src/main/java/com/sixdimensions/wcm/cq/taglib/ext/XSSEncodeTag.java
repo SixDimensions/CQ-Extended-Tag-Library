@@ -9,9 +9,6 @@ import java.io.IOException;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import tldgen.Tag;
-import tldgen.TagAttribute;
-
 import com.adobe.granite.xss.XSSAPI;
 import com.day.cq.wcm.tags.DefineObjectsTag;
 
@@ -20,7 +17,6 @@ import com.day.cq.wcm.tags.DefineObjectsTag;
  * 
  * @author dklco
  */
-@Tag
 public class XSSEncodeTag extends TagSupport {
 
 	/**
@@ -115,7 +111,6 @@ public class XSSEncodeTag extends TagSupport {
 	 * @param type
 	 *            the type to set
 	 */
-	@TagAttribute(required = true)
 	public void setType(final String type) {
 		this.type = ENCODING_TYPE.valueOf(type.toUpperCase());
 	}
@@ -124,7 +119,6 @@ public class XSSEncodeTag extends TagSupport {
 	 * @param value
 	 *            the value to set
 	 */
-	@TagAttribute(required = true)
 	public void setValue(final String value) {
 		this.value = value;
 	}
@@ -133,7 +127,6 @@ public class XSSEncodeTag extends TagSupport {
 	 * @param var
 	 *            the var to set
 	 */
-	@TagAttribute(required = true)
 	public void setVar(final String var) {
 		this.var = var;
 	}

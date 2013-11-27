@@ -22,9 +22,6 @@ import javax.servlet.jsp.tagext.TagSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import tldgen.Tag;
-import tldgen.TagAttribute;
-
 import com.day.cq.dam.api.Asset;
 
 /**
@@ -32,14 +29,13 @@ import com.day.cq.dam.api.Asset;
  * 
  * @author dklco
  */
-@Tag
 public class GetAssetMetadataTag extends TagSupport {
 	private static final Logger log = LoggerFactory
 			.getLogger(GetAssetMetadataTag.class);
 	private static final long serialVersionUID = -4882565776256570621L;
 
 	/**
-	 * The resource to use to retrieve the asset.
+	 * The asset from which to retrieve the metadata.
 	 */
 	private Asset asset;
 
@@ -105,7 +101,6 @@ public class GetAssetMetadataTag extends TagSupport {
 	 * @param asset
 	 *            the asset from which to retrieve the metadata
 	 */
-	@TagAttribute(required = true)
 	public void setAsset(final Asset asset) {
 		this.asset = asset;
 	}
@@ -116,7 +111,6 @@ public class GetAssetMetadataTag extends TagSupport {
 	 * @param key
 	 *            the key of the metadata value to retrieve
 	 */
-	@TagAttribute(required = true)
 	public void setKey(final String key) {
 		this.key = key;
 	}
@@ -125,7 +119,6 @@ public class GetAssetMetadataTag extends TagSupport {
 	 * @param var
 	 *            the var to set
 	 */
-	@TagAttribute(required = true)
 	public void setVar(final String var) {
 		this.var = var;
 	}
