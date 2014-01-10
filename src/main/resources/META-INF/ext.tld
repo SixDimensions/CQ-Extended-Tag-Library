@@ -23,15 +23,13 @@
 	<function>
 		<name>getPage</name>
 		<function-class>com.sixdimensions.wcm.cq.taglib.ext.Functions</function-class>
-		<function-signature>com.day.cq.wcm.api.Page
-			getPage(com.day.cq.wcm.api.PageManager,java.lang.String)
+		<function-signature>com.day.cq.wcm.api.Page getPage(com.day.cq.wcm.api.PageManager,java.lang.String)
 		</function-signature>
 	</function>
 	<function>
 		<name>getTitle</name>
 		<function-class>com.sixdimensions.wcm.cq.taglib.ext.Functions</function-class>
-		<function-signature>java.lang.String
-			getTitle(com.day.cq.wcm.api.Page,java.lang.String)
+		<function-signature>java.lang.String getTitle(com.day.cq.wcm.api.Page,java.lang.String)
 		</function-signature>
 	</function>
 	<function>
@@ -42,8 +40,7 @@
 	<function>
 		<name>listPages</name>
 		<function-class>com.sixdimensions.wcm.cq.taglib.ext.Functions</function-class>
-		<function-signature>java.util.Iterator
-			listPages(com.day.cq.wcm.api.Page,java.lang.Boolean)
+		<function-signature>java.util.Iterator listPages(com.day.cq.wcm.api.Page,java.lang.Boolean)
 		</function-signature>
 	</function>
 
@@ -174,7 +171,7 @@
 			<description>
 				The encoding type to use for the value
 			</description>
-			<name>type</name>
+			<name>encodingType</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>

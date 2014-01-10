@@ -8,12 +8,13 @@ import java.util.Iterator;
 import java.util.zip.CRC32;
 
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageFilter;
 import com.day.cq.wcm.api.PageManager;
-import com.day.text.Text;
 
 /**
  * The Expression Languages for the Ext Taglib.
@@ -21,6 +22,8 @@ import com.day.text.Text;
  * @author dklco
  */
 public class Functions {
+
+	private static final Logger log = LoggerFactory.getLogger(Functions.class);
 
 	/**
 	 * Escapes the provided string into a valid CSS selector. The string will be
@@ -31,7 +34,24 @@ public class Functions {
 	 * @return the escaped string
 	 */
 	public static final String escapeSelector(final String string) {
-		return Text.escape(string.toLowerCase(), '-');
+		final StringBuffer res = new StringBuffer();
+		boolean dash = false;
+		for (final Character c : string.toCharArray()) {
+			if (Character.isLetterOrDigit(c)) {
+				res.append(Character.toLowerCase(c));
+				dash = true;
+			} else {
+				if (dash) {
+					res.append('-');
+					dash = false;
+				}
+			}
+		}
+		String result = res.toString();
+		if (result.endsWith("-")) {
+			result = result.substring(0, result.length() - 1);
+		}
+		return result;
 	}
 
 	/**
@@ -76,6 +96,9 @@ public class Functions {
 	 * @return the page at the path
 	 */
 	public static final Page getPage(final PageManager pm, final String path) {
+		if (pm == null) {
+			throw new RuntimeException("Null page manager provided to get Page");
+		}
 		return pm.getContainingPage(path);
 	}
 
@@ -90,6 +113,10 @@ public class Functions {
 	 * @return
 	 */
 	public static final String getTitle(final Page page, final String type) {
+		if (page == null) {
+			log.warn("Unable to get page title, page is null");
+			return "";
+		}
 		String title = null;
 		if ("nav".equals(type)) {
 			title = page.getNavigationTitle();
@@ -128,8 +155,8 @@ public class Functions {
 	 *            whether or not to filter the child pages
 	 * @return the child pages
 	 */
-	public static final Iterator<Page> listChildPages(final Page page,
-			final boolean filter) {
+	public static final Iterator<Page> listPages(final Page page,
+			final Boolean filter) {
 		return filter ? page.listChildren(new PageFilter()) : page
 				.listChildren();
 	}

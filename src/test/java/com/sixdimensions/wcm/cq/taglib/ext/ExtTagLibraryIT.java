@@ -17,6 +17,8 @@ package com.sixdimensions.wcm.cq.taglib.ext;
 
 import static org.junit.Assert.assertFalse;
 
+import java.io.IOException;
+
 import org.apache.sling.testing.tools.http.RequestExecutor;
 import org.apache.sling.testing.tools.sling.SlingClient;
 import org.apache.sling.testing.tools.sling.SlingTestBase;
@@ -80,6 +82,45 @@ public class ExtTagLibraryIT extends SlingTestBase {
 		log.info("Initialization successful");
 	}
 
+	public RequestExecutor initTest(final String name) throws IOException {
+		log.info("Creating testing component...");
+		Utils.createFolders(this.slingClient, "/apps/test/ext/" + name);
+		this.slingClient.upload(
+				"/apps/test/ext/" + name + "/" + name + ".jsp",
+				ExtTagLibraryIT.class.getClassLoader().getResourceAsStream(
+						name + ".jsp"), -1, true);
+		log.info(this
+				.getRequestExecutor()
+				.execute(
+						this.getRequestBuilder()
+								.buildGetRequest(
+										"/apps/test/ext/" + name + ".3.json")
+								.withCredentials("admin", "admin"))
+				.assertStatus(200).getContent());
+
+		log.info("Creating testing content...");
+		this.slingClient.createNode("/content/test/ext/" + name,
+				"jcr:primaryType", "nt:unstructured", "sling:resourceType",
+				"test/ext/" + name);
+		log.info(this
+				.getRequestExecutor()
+				.execute(
+						this.getRequestBuilder()
+								.buildGetRequest(
+										"/content/test/ext/" + name + ".json")
+								.withCredentials("admin", "admin"))
+				.assertStatus(200).getContent());
+
+		final RequestExecutor exec = this.getRequestExecutor().execute(
+				this.getRequestBuilder()
+						.buildGetRequest("/content/test/ext/" + name + ".html")
+						.withCredentials("admin", "admin"));
+		log.info("Content: " + exec.getContent());
+		exec.assertStatus(200);
+
+		return exec;
+	}
+
 	/**
 	 * Test the asset tags
 	 * 
@@ -88,37 +129,9 @@ public class ExtTagLibraryIT extends SlingTestBase {
 	@Test
 	public void testAssetTags() throws Exception {
 
-		log.info("Creating testing component...");
-		Utils.createFolders(this.slingClient, "/apps/test/ext/asset");
-		this.slingClient.upload(
-				"/apps/test/ext/asset/asset.jsp",
-				ExtTagLibraryIT.class.getClassLoader().getResourceAsStream(
-						"asset.jsp"), -1, true);
-		log.info(this
-				.getRequestExecutor()
-				.execute(
-						this.getRequestBuilder()
-								.buildGetRequest("/apps/test/ext/asset.3.json")
-								.withCredentials("admin", "admin"))
-				.assertStatus(200).getContent());
-
-		log.info("Creating testing content...");
-		this.slingClient.createNode("/content/test/ext/asset",
-				"jcr:primaryType", "nt:unstructured", "sling:resourceType",
-				"test/ext/asset");
-		log.info(this
-				.getRequestExecutor()
-				.execute(
-						this.getRequestBuilder()
-								.buildGetRequest("/content/test/ext/asset.json")
-								.withCredentials("admin", "admin"))
-				.assertStatus(200).getContent());
+		final RequestExecutor exec = this.initTest("asset");
 
 		log.info("Asserting asset works");
-		final RequestExecutor exec = this.getRequestExecutor().execute(
-				this.getRequestBuilder()
-						.buildGetRequest("/content/test/ext/asset.html")
-						.withCredentials("admin", "admin"));
 		exec.assertContentContains("ASSET_PATH/content/dam/geometrixx/shapes/cir_circle.pngASSET_PATH");
 		exec.assertContentContains("ASSET_METADATAimage/pngASSET_METADATA");
 
@@ -133,40 +146,10 @@ public class ExtTagLibraryIT extends SlingTestBase {
 	@Test
 	public void testDefer() throws Exception {
 
-		log.info("Creating testing component...");
-		Utils.createFolders(this.slingClient, "/apps/test/ext/defer");
-		this.slingClient.upload(
-				"/apps/test/ext/defer/defer.jsp",
-				ExtTagLibraryIT.class.getClassLoader().getResourceAsStream(
-						"defer.jsp"), -1, true);
-		log.info(this
-				.getRequestExecutor()
-				.execute(
-						this.getRequestBuilder()
-								.buildGetRequest("/apps/test/ext/defer.3.json")
-								.withCredentials("admin", "admin"))
-				.assertStatus(200).getContent());
+		log.info("Asserting defer works");
+		final RequestExecutor exec = this.initTest("defer");
 
-		log.info("Creating testing content...");
-		Utils.createFolders(this.slingClient, "/content/test/ext");
-		this.slingClient.createNode("/content/test/ext/defer",
-				"jcr:primaryType", "nt:unstructured", "sling:resourceType",
-				"test/ext/defer");
-		log.info(this
-				.getRequestExecutor()
-				.execute(
-						this.getRequestBuilder()
-								.buildGetRequest("/content/test/ext/defer.json")
-								.withCredentials("admin", "admin"))
-				.assertStatus(200).getContent());
-
-		log.info("Asserting defer");
-		this.getRequestExecutor()
-				.execute(
-						this.getRequestBuilder()
-								.buildGetRequest("/content/test/ext/defer.html")
-								.withCredentials("admin", "admin"))
-				.assertStatus(200).assertContentContains("twoone");
+		exec.assertContentContains("twoone");
 
 		log.info("All Defer tests successful");
 	}
@@ -179,42 +162,8 @@ public class ExtTagLibraryIT extends SlingTestBase {
 	@Test
 	public void testDisplayMode() throws Exception {
 
-		log.info("Creating testing component...");
-		Utils.createFolders(this.slingClient, "/apps/test/ext/displayMode");
-		this.slingClient.upload(
-				"/apps/test/ext/displayMode/displayMode.jsp",
-				ExtTagLibraryIT.class.getClassLoader().getResourceAsStream(
-						"displayMode.jsp"), -1, true);
-		log.info(this
-				.getRequestExecutor()
-				.execute(
-						this.getRequestBuilder()
-								.buildGetRequest(
-										"/apps/test/ext/displayMode.3.json")
-								.withCredentials("admin", "admin"))
-				.assertStatus(200).getContent());
-
-		log.info("Creating testing content...");
-		Utils.createFolders(this.slingClient, "/content/test/ext");
-		this.slingClient.createNode("/content/test/ext/displayMode",
-				"jcr:primaryType", "nt:unstructured", "sling:resourceType",
-				"test/ext/displayMode");
-		log.info(this
-				.getRequestExecutor()
-				.execute(
-						this.getRequestBuilder()
-								.buildGetRequest(
-										"/content/test/ext/displayMode.json")
-								.withCredentials("admin", "admin"))
-				.assertStatus(200).getContent());
-
 		log.info("Asserting displayMode works");
-		final RequestExecutor exec = this.getRequestExecutor().execute(
-				this.getRequestBuilder()
-						.buildGetRequest("/content/test/ext/displayMode.html")
-						.withCredentials("admin", "admin"));
-		log.info("Retrieved: " + exec.getContent());
-		exec.assertStatus(200);
+		final RequestExecutor exec = this.initTest("displayMode");
 		exec.assertContentContains("Edit");
 		assertFalse(exec.getContent().contains("Publish"));
 
@@ -229,47 +178,51 @@ public class ExtTagLibraryIT extends SlingTestBase {
 	@Test
 	public void testExternalize() throws Exception {
 
-		log.info("Creating testing component...");
-		Utils.createFolders(this.slingClient, "/apps/test/ext/externalize");
-		this.slingClient.upload(
-				"/apps/test/ext/externalize/externalize.jsp",
-				ExtTagLibraryIT.class.getClassLoader().getResourceAsStream(
-						"externalize.jsp"), -1, true);
-		log.info(this
-				.getRequestExecutor()
-				.execute(
-						this.getRequestBuilder()
-								.buildGetRequest(
-										"/apps/test/ext/externalize.3.json")
-								.withCredentials("admin", "admin"))
-				.assertStatus(200).getContent());
-
-		log.info("Creating testing content...");
-		this.slingClient.createNode("/content/test/ext/externalize",
-				"jcr:primaryType", "nt:unstructured", "sling:resourceType",
-				"test/ext/externalize");
-		log.info(this
-				.getRequestExecutor()
-				.execute(
-						this.getRequestBuilder()
-								.buildGetRequest(
-										"/content/test/ext/externalize.json")
-								.withCredentials("admin", "admin"))
-				.assertStatus(200).getContent());
-
 		log.info("Asserting externalize works");
-		this.getRequestExecutor()
-				.execute(
-						this.getRequestBuilder()
-								.buildGetRequest(
-										"/content/test/ext/externalize.html")
-								.withCredentials("admin", "admin"))
-				.assertContentContains(
-						"AUTHORhttp://localhost:4502/content/extAUTHOR")
-				.assertContentContains("RELATIVE/content/geometrixxRELATIVE")
-				.assertContentContains(
-						"ABSOLUTEhttp://localhost:8765/content/geometrixxABSOLUTE");
+		final RequestExecutor exec = this.initTest("externalize");
+
+		exec.assertContentContains("AUTHORhttp://localhost:4502/content/extAUTHOR");
+		exec.assertContentContains("RELATIVE/content/geometrixxRELATIVE");
+		exec.assertContentContains("ABSOLUTEhttp://localhost:8765/content/geometrixxABSOLUTE");
 
 		log.info("All externalize tests successful");
+	}
+
+	/**
+	 * Test the functions
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testFunctions() throws Exception {
+		log.info("Asserting functions work");
+		final RequestExecutor exec = this.initTest("functions");
+
+		exec.assertContentContains("/content/geometrixx/en");
+		exec.assertContentContains("English");
+		exec.assertContentContains("GeoMetrixx");
+		exec.assertContentContains("path_1766808107");
+		exec.assertContentContains("Toolbar");
+		exec.assertContentContains("awesome-coolness");
+		log.info("Content created successfully");
+	}
+
+	/**
+	 * Test the xss escape tag
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testXSSEscape() throws Exception {
+		log.info("Asserting xss works");
+		final RequestExecutor exec = this.initTest("xss");
+		exec.assertContentContains("&lt;script&gt;I am a bad person&lt;&#x2f;script&gt;");
+		exec.assertContentContains("&quot;I&#x20;am&#x20;worse");
+		exec.assertContentContains("\\x22I\\x20am\\x20also\\x20bad\\x22");
+		exec.assertContentContains("&#x3c;xml&#x3e;is stupid&#x3c;&#x2f;xml&#x3e;");
+		exec.assertContentContains("&#x22;XML SUX&#x22;");
+		log.info("Content: " + exec.getContent());
+
+		log.info("All asset tests successful");
 	}
 }

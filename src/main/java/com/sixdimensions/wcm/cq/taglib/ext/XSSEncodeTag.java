@@ -34,7 +34,7 @@ public class XSSEncodeTag extends TagSupport {
 	/**
 	 * The current encoding type
 	 */
-	private ENCODING_TYPE type = ENCODING_TYPE.HTML;
+	private String type = ENCODING_TYPE.HTML.name();
 
 	/**
 	 * The value to encode
@@ -56,7 +56,7 @@ public class XSSEncodeTag extends TagSupport {
 		final XSSAPI xssAPI = XSSAPI.class.cast(this.pageContext
 				.getAttribute(DefineObjectsTag.DEFAULT_XSSAPI_NAME));
 		String encodedValue = "";
-		switch (this.type) {
+		switch (ENCODING_TYPE.valueOf(this.type.toUpperCase())) {
 		case HTML_ATTR:
 			encodedValue = xssAPI.encodeForHTMLAttr(this.value);
 			break;
@@ -89,7 +89,7 @@ public class XSSEncodeTag extends TagSupport {
 	/**
 	 * @return the type
 	 */
-	public ENCODING_TYPE getType() {
+	public String getEncodingType() {
 		return this.type;
 	}
 
@@ -111,8 +111,8 @@ public class XSSEncodeTag extends TagSupport {
 	 * @param type
 	 *            the type to set
 	 */
-	public void setType(final String type) {
-		this.type = ENCODING_TYPE.valueOf(type.toUpperCase());
+	public void setEncodingType(final String type) {
+		this.type = type;
 	}
 
 	/**
