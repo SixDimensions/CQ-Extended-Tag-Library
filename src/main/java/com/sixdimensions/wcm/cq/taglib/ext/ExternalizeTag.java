@@ -4,13 +4,18 @@
  */
 package com.sixdimensions.wcm.cq.taglib.ext;
 
+import java.io.IOException;
+
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.scripting.SlingBindings;
 import org.apache.sling.api.scripting.SlingScriptHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.day.cq.commons.Externalizer;
 
@@ -20,6 +25,12 @@ import com.day.cq.commons.Externalizer;
  * @author dklco
  */
 public class ExternalizeTag extends TagSupport {
+
+	/**
+	 * The SLF4J Logger
+	 */
+	private static final Logger log = LoggerFactory
+			.getLogger(ExternalizeTag.class);
 
 	/**
 	 * The serialization UID
@@ -68,7 +79,16 @@ public class ExternalizeTag extends TagSupport {
 		} else {
 			externalized = externalizer.relativeLink(request, this.path);
 		}
-		this.pageContext.setAttribute(this.var, externalized);
+
+		if (!StringUtils.isEmpty(this.getVar())) {
+			this.pageContext.setAttribute(this.var, externalized);
+		} else {
+			try {
+				this.pageContext.getOut().print(externalized);
+			} catch (final IOException e) {
+				log.error("Exception writing externaized path to page", e);
+			}
+		}
 
 		return EVAL_PAGE;
 	}

@@ -102,7 +102,7 @@
 		<attribute>
 			<description>The variable in which to save the externalized path</description>
 			<name>var</name>
-			<required>true</required>
+			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
@@ -130,9 +130,10 @@
 		<attribute>
 			<description>
 				The name of the page context variable in which to save the metadata value
+				If not specified the value will be written to the page
 			</description>
 			<name>var</name>
-			<required>true</required>
+			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>

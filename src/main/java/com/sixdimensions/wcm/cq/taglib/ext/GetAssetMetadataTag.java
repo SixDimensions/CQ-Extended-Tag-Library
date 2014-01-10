@@ -16,9 +16,12 @@
  */
 package com.sixdimensions.wcm.cq.taglib.ext;
 
+import java.io.IOException;
+
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,7 +65,15 @@ public class GetAssetMetadataTag extends TagSupport {
 			log.debug("Retrieving metadata from asset: " + this.asset.getPath());
 			final String value = this.asset.getMetadataValue(this.key);
 
-			this.pageContext.setAttribute(this.getVar(), value);
+			if (!StringUtils.isEmpty(this.getVar())) {
+				this.pageContext.setAttribute(this.getVar(), value);
+			} else {
+				try {
+					this.pageContext.getOut().print(value);
+				} catch (final IOException e) {
+					log.error("Exception writing asset metadata to output stream");
+				}
+			}
 		} else {
 			log.warn("Unable to retrieve Metadata Asset is null");
 		}
