@@ -52,11 +52,11 @@ public class ExternalizeTag extends TagSupport {
 
 		final SlingScriptHelper sling = SlingScriptHelper.class
 				.cast(this.pageContext.getAttribute(SlingBindings.SLING));
-		final Externalizer externalizer = sling.getService(Externalizer.class);
+		final Externalizer externalizer = sling.getRequest()
+				.getResourceResolver().adaptTo(Externalizer.class);
 		final Resource resource = Resource.class.cast(this.pageContext
 				.getAttribute(SlingBindings.RESOURCE));
-		final SlingHttpServletRequest request = SlingHttpServletRequest.class
-				.cast(this.pageContext.getAttribute(SlingBindings.REQUEST));
+		final SlingHttpServletRequest request = sling.getRequest();
 
 		String externalized = null;
 		if ("author".equals(this.mode)) {

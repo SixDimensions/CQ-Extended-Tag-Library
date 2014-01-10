@@ -191,7 +191,7 @@
 					<systemPropertyVariables>
 						<jar.executor.work.folder>${cq.dir}/crx-quickstart</jar.executor.work.folder>
 						<jar.executor.jar.options>-p $JAREXEC_SERVER_PORT$ -nobrowser -nofork</jar.executor.jar.options>
-						<jar.executor.vm.options>-XX:MaxPermSize=256m -Xmx1024M</jar.executor.vm.options>
+						<jar.executor.vm.options>-XX:MaxPermSize=256m -Xmx1024M -Xrunjdwp:transport=dt_socket,server=y,address=30303,suspend=n -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false</jar.executor.vm.options>
 						<jar.executor.jar.folder>${cq.dir}</jar.executor.jar.folder>
 						<jar.executor.jar.name.regexp>cq5.*jar$</jar.executor.jar.name.regexp>
 						<additional.bundles.path>${project.build.directory}/sling/additional-bundles</additional.bundles.path>
