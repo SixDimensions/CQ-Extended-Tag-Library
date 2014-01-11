@@ -204,6 +204,7 @@ public class ExtTagLibraryIT extends SlingTestBase {
 		exec.assertContentContains("path_1766808107");
 		exec.assertContentContains("Toolbar");
 		exec.assertContentContains("awesome-coolness");
+		exec.assertContentContains("/content/geometrixx/en/toolbar/account/login");
 		log.info("Content created successfully");
 	}
 

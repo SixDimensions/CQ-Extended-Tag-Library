@@ -14,17 +14,19 @@
 		<function-signature>java.lang.String escapeSelector(java.lang.String)</function-signature>
 	</function>
 	<function>
+		<name>getInheritanceValueMap</name>
+		<function-class>com.sixdimensions.wcm.cq.taglib.ext.Functions</function-class>
+		<function-signature>com.day.cq.commons.inherit.InheritanceValueMap getInheritanceValueMap(org.apache.sling.api.resource.Resource)</function-signature>
+	</function>
+	<function>
 		<name>getInherited</name>
 		<function-class>com.sixdimensions.wcm.cq.taglib.ext.Functions</function-class>
-		<function-signature>java.lang.Object
-			getInherited(com.day.cq.commons.inherit.InheritanceValueMap,java.lang.String,java.lang.Object)
-		</function-signature>
+		<function-signature>java.lang.Object getInherited(com.day.cq.commons.inherit.InheritanceValueMap,java.lang.String,java.lang.Object)</function-signature>
 	</function>
 	<function>
 		<name>getPage</name>
 		<function-class>com.sixdimensions.wcm.cq.taglib.ext.Functions</function-class>
-		<function-signature>com.day.cq.wcm.api.Page getPage(com.day.cq.wcm.api.PageManager,java.lang.String)
-		</function-signature>
+		<function-signature>com.day.cq.wcm.api.Page getPage(com.day.cq.wcm.api.PageManager,java.lang.String)</function-signature>
 	</function>
 	<function>
 		<name>getTitle</name>
@@ -40,8 +42,7 @@
 	<function>
 		<name>listPages</name>
 		<function-class>com.sixdimensions.wcm.cq.taglib.ext.Functions</function-class>
-		<function-signature>java.util.Iterator listPages(com.day.cq.wcm.api.Page,java.lang.Boolean)
-		</function-signature>
+		<function-signature>java.util.Iterator listPages(com.day.cq.wcm.api.Page,java.lang.Boolean)</function-signature>
 	</function>
 
 	<!-- Tags -->

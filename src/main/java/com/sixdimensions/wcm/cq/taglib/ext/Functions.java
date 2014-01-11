@@ -8,9 +8,11 @@ import java.util.Iterator;
 import java.util.zip.CRC32;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.sling.api.resource.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap;
 import com.day.cq.commons.inherit.InheritanceValueMap;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageFilter;
@@ -52,6 +54,18 @@ public class Functions {
 			result = result.substring(0, result.length() - 1);
 		}
 		return result;
+	}
+
+	/**
+	 * Gets an InheritanceValueMap from the specified resource.
+	 * 
+	 * @param resource
+	 *            the resource from which to get the InheritanceValueMap
+	 * @return the InheritanceValueMap
+	 */
+	public static final InheritanceValueMap getInheritanceValueMap(
+			final Resource resource) {
+		return new HierarchyNodeInheritanceValueMap(resource);
 	}
 
 	/**
