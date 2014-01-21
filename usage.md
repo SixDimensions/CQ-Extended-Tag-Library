@@ -3,6 +3,8 @@ title: Usage
 layout: default
 ---
 
+[6D Labs](http://labs.sixdimensions.com) / [{{ site.name }}]({{ site.baseurl }}/) / {{ page.title }}
+
 ## Using the CQ Extended Tag Library
 
 To enable the CQ Extended Tag Library in your scripts, add the following into your `global.jsp`:

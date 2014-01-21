@@ -3,6 +3,8 @@ layout: default
 title: Home
 ---
 
+[6D Labs](http://labs.sixdimensions.com) / {{ site.name }}
+
 ## CQ Extended Tag Library
 
 CQ Extended Taglibs is a library of tag and Expression Language functions for the Adobe 

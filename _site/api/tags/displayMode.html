@@ -2,9 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>{% if page.title %} {{ page.title }} | {% endif %} {{ site.name }} | 6D Labs</title>
-		{% if page.tags %}<meta content="{{page.tags | join: ', '}}" name="keywords" />{% endif %}
-		{% if page.summary %}<meta content="{{ page.summary }}" name="description" />{% endif %}
+		<title> displayMode |  CQ Extended Tag Library | 6D Labs</title>
+		
+		<meta content="Displays or hides the contents of the tag based on the current WCMMode" name="description" />
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
 		<link rel="stylesheet" href="http://labs.sixdimensions.com/css/base.css" />
 		<link rel="stylesheet" href="http://labs.sixdimensions.com/css/skeleton.css" />
@@ -20,7 +20,7 @@
 					<a href="http://www.sixdimensions.com/contact-us">Contact Us</a>
 				</div>
 				<h1>
-					<a href="{{ site.baseurl }}/" id="logo">
+					<a href="/CQ-Extended-Tag-Library/" id="logo">
 						<img width="300" height="84" src="http://labs.sixdimensions.com/images/logo.png" alt="Six Dimensions Labs">
 					</a>
 				</h1>
@@ -28,12 +28,75 @@
 			</div>
 			<div class="three columns sidebar">
 				<div id="nav">
-					{% include nav.html %}
+					<ul class="menu">
+	<li><a href="/CQ-Extended-Tag-Library/">Home</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/usage.html">Usage</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/api.html">API</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/installation.html">Installation</a></li>
+</ul>
 				</div>
 			</div>
 			<div class="seventeen columns main">
 				<div class="eleven columns">
-					{{ content }}
+					<p><a href="http://labs.sixdimensions.com">6D Labs</a> / <a href="/CQ-Extended-Tag-Library/">CQ Extended Tag Library</a> / <a href="/CQ-Extended-Tag-Library/api.html">API</a> / <a href="/CQ-Extended-Tag-Library/api/tags.html">Tags</a> | displayMode</p>
+
+<h2 id="displaymode_tag">displayMode Tag</h2>
+
+<p>Displays the contents of the tag only if the current WCMMode matches a list of display modes or is not in a list of hide modes. One of either the display or hide modes must be specified.</p>
+
+<p>Valid modes are:</p>
+
+<ul>
+<li>
+<p>analytics - The WCM is in analytics mode.</p>
+</li>
+
+<li>
+<p>design - The WCM is in design mode.</p>
+</li>
+
+<li>
+<p>disabled - The WCM is disabled.</p>
+</li>
+
+<li>
+<p>edit - The WCM is in edit mode.</p>
+</li>
+
+<li>
+<p>preview - The WCM is in preview mode.</p>
+</li>
+
+<li>
+<p>read_only - The WCM is in read only mode.</p>
+</li>
+
+<li>
+<p><strong>name</strong> - displayMode</p>
+</li>
+
+<li>
+<p><strong>class</strong> - com.sixdimensions.wcm.cq.taglib.ext.DisplayModeTag</p>
+</li>
+
+<li>
+<p><strong>attributes</strong>:</p>
+
+<ul>
+<li><strong>displayModes</strong> - A comma separate list of valid modes in which to display the contents</li>
+
+<li><strong>hideModes</strong> - A comma separate list of valid modes in which to hide the contents</li>
+</ul>
+</li>
+</ul>
+
+<p>Example:</p>
+
+<pre><code>&lt;ext:displayMode displayMode=&quot;edit&quot;&gt;
+  &lt;c:if test=&quot;${properties.address == &#39;&#39;}&quot;&gt;
+  	Please set the address!
+  &lt;/c:if&gt;
+&lt;/ext:displayMode&gt;</code></pre>
 				</div>
 				<div class="five columns">
 					<h2><a href="http://labs.sixdimensions.com/blog.xml" title="Blog RSS Feed">Follow Our Blog Posts</a></h2>

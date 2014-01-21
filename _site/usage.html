@@ -2,9 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>{% if page.title %} {{ page.title }} | {% endif %} {{ site.name }} | 6D Labs</title>
-		{% if page.tags %}<meta content="{{page.tags | join: ', '}}" name="keywords" />{% endif %}
-		{% if page.summary %}<meta content="{{ page.summary }}" name="description" />{% endif %}
+		<title> Usage |  CQ Extended Tag Library | 6D Labs</title>
+		
+		
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
 		<link rel="stylesheet" href="http://labs.sixdimensions.com/css/base.css" />
 		<link rel="stylesheet" href="http://labs.sixdimensions.com/css/skeleton.css" />
@@ -20,7 +20,7 @@
 					<a href="http://www.sixdimensions.com/contact-us">Contact Us</a>
 				</div>
 				<h1>
-					<a href="{{ site.baseurl }}/" id="logo">
+					<a href="/CQ-Extended-Tag-Library/" id="logo">
 						<img width="300" height="84" src="http://labs.sixdimensions.com/images/logo.png" alt="Six Dimensions Labs">
 					</a>
 				</h1>
@@ -28,12 +28,41 @@
 			</div>
 			<div class="three columns sidebar">
 				<div id="nav">
-					{% include nav.html %}
+					<ul class="menu">
+	<li><a href="/CQ-Extended-Tag-Library/">Home</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/usage.html">Usage</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/api.html">API</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/installation.html">Installation</a></li>
+</ul>
 				</div>
 			</div>
 			<div class="seventeen columns main">
 				<div class="eleven columns">
-					{{ content }}
+					<p><a href="http://labs.sixdimensions.com">6D Labs</a> / <a href="/CQ-Extended-Tag-Library/">CQ Extended Tag Library</a> / Usage</p>
+
+<h2 id="using_the_cq_extended_tag_library">Using the CQ Extended Tag Library</h2>
+
+<p>To enable the CQ Extended Tag Library in your scripts, add the following into your <code>global.jsp</code>:</p>
+
+<pre><code>&lt;%@taglib prefix=&quot;ext&quot; uri=&quot;http://labs.sixdimensions.com/tld/ext&quot; %&gt;</code></pre>
+
+<p>This registers the CQ Extended Tag Library using the prefix <code>ext</code>. Then to use the tags and/or functions, you use this prefix, ex:</p>
+
+<pre><code>&lt;ext:defer id=&quot;run-once-javascript&quot;&gt;
+  &lt;script&gt;
+    alert(&quot;Hello World&quot;);
+  &lt;/script&gt;
+&lt;/ext:defer&gt;</code></pre>
+
+<p>or using an Expression Language function:</p>
+
+<pre><code>${ext:getPage(pageManager,&#39;/content/geometrixx/en&#39;)}</code></pre>
+
+<h3 id="sling_tag_library">Sling Tag Library</h3>
+
+<p>The newest release of the Sling Tag Library (currently version 2.2.0), complements the CQ Extended Tag Library and can be downloaded out of the Maven Central Repository.</p>
+
+<p>For details on using the Sling Tag Library, check the <a href="http://sling.apache.org/documentation/bundles/sling-scripting-jsp-taglib.html">documentation page</a>.</p>
 				</div>
 				<div class="five columns">
 					<h2><a href="http://labs.sixdimensions.com/blog.xml" title="Blog RSS Feed">Follow Our Blog Posts</a></h2>

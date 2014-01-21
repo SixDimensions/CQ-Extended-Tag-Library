@@ -2,9 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>{% if page.title %} {{ page.title }} | {% endif %} {{ site.name }} | 6D Labs</title>
-		{% if page.tags %}<meta content="{{page.tags | join: ', '}}" name="keywords" />{% endif %}
-		{% if page.summary %}<meta content="{{ page.summary }}" name="description" />{% endif %}
+		<title> Tags |  CQ Extended Tag Library | 6D Labs</title>
+		
+		
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
 		<link rel="stylesheet" href="http://labs.sixdimensions.com/css/base.css" />
 		<link rel="stylesheet" href="http://labs.sixdimensions.com/css/skeleton.css" />
@@ -20,7 +20,7 @@
 					<a href="http://www.sixdimensions.com/contact-us">Contact Us</a>
 				</div>
 				<h1>
-					<a href="{{ site.baseurl }}/" id="logo">
+					<a href="/CQ-Extended-Tag-Library/" id="logo">
 						<img width="300" height="84" src="http://labs.sixdimensions.com/images/logo.png" alt="Six Dimensions Labs">
 					</a>
 				</h1>
@@ -28,12 +28,37 @@
 			</div>
 			<div class="three columns sidebar">
 				<div id="nav">
-					{% include nav.html %}
+					<ul class="menu">
+	<li><a href="/CQ-Extended-Tag-Library/">Home</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/usage.html">Usage</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/api.html">API</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/installation.html">Installation</a></li>
+</ul>
 				</div>
 			</div>
 			<div class="seventeen columns main">
 				<div class="eleven columns">
-					{{ content }}
+					<p><a href="http://labs.sixdimensions.com">6D Labs</a> / <a href="/CQ-Extended-Tag-Library/">CQ Extended Tag Library</a> / <a href="/CQ-Extended-Tag-Library/api.html">API</a> / Tags</p>
+
+<h2 id="tags">Tags</h2>
+
+<p>The CQ Extended Tag Library provides a set of <a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnalj.html">custom JSP Tags</a> built to make it easier for developers to create clean, error-free scripts in Adobe CQ/AEM.</p>
+
+<p>The following tags are available:</p>
+
+<ul>
+<li>
+<p><strong><a href="/CQ-Extended-Tag-Library/api/tags/defer.html">defer</a></strong> - Defers the writing of HTML until a WriteDeferred tag is evaluated.</p>
+</li>
+
+<li>
+<p><strong><a href="/CQ-Extended-Tag-Library/api/tags/displayMode.html">displayMode</a></strong> - Displays or hides the contents of the tag based on the current WCMMode</p>
+</li>
+
+<li>
+<p><strong><a href="/CQ-Extended-Tag-Library/api/tags/externalize.html">externalize</a></strong> - Externalizes paths into absolute, relative and author URLs</p>
+</li>
+</ul>
 				</div>
 				<div class="five columns">
 					<h2><a href="http://labs.sixdimensions.com/blog.xml" title="Blog RSS Feed">Follow Our Blog Posts</a></h2>

@@ -2,9 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>{% if page.title %} {{ page.title }} | {% endif %} {{ site.name }} | 6D Labs</title>
-		{% if page.tags %}<meta content="{{page.tags | join: ', '}}" name="keywords" />{% endif %}
-		{% if page.summary %}<meta content="{{ page.summary }}" name="description" />{% endif %}
+		<title> Home |  CQ Extended Tag Library | 6D Labs</title>
+		
+		
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
 		<link rel="stylesheet" href="http://labs.sixdimensions.com/css/base.css" />
 		<link rel="stylesheet" href="http://labs.sixdimensions.com/css/skeleton.css" />
@@ -20,7 +20,7 @@
 					<a href="http://www.sixdimensions.com/contact-us">Contact Us</a>
 				</div>
 				<h1>
-					<a href="{{ site.baseurl }}/" id="logo">
+					<a href="/CQ-Extended-Tag-Library/" id="logo">
 						<img width="300" height="84" src="http://labs.sixdimensions.com/images/logo.png" alt="Six Dimensions Labs">
 					</a>
 				</h1>
@@ -28,12 +28,39 @@
 			</div>
 			<div class="three columns sidebar">
 				<div id="nav">
-					{% include nav.html %}
+					<ul class="menu">
+	<li><a href="/CQ-Extended-Tag-Library/">Home</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/usage.html">Usage</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/api.html">API</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/installation.html">Installation</a></li>
+</ul>
 				</div>
 			</div>
 			<div class="seventeen columns main">
 				<div class="eleven columns">
-					{{ content }}
+					<p><a href="http://labs.sixdimensions.com">6D Labs</a> / CQ Extended Tag Library</p>
+
+<h2 id="cq_extended_tag_library">CQ Extended Tag Library</h2>
+
+<p>CQ Extended Taglibs is a library of tag and Expression Language functions for the Adobe CQ5 platform. These tags expose commonly used methods and utilities as JSP Tags and EL Functions.</p>
+
+<h3 id="why_do_i_need_this">Why do I need this?</h3>
+
+<p>CQ Extended Taglibs allow developers to write cleaner and less error-prone CQ5 components by enabling them to use the power and flexibility of Sling and CQ5 with Tags and EL Functions.</p>
+
+<h3 id="how_do_i_use_the_tags">How do I use the tags?</h3>
+
+<p>All of the tags use the cqex namespace. For more information on the available tags and functions and how to utilize them, please consult the documentation page.</p>
+
+<h3 id="learn_more">Learn More</h3>
+
+<ul>
+<li>Learn how to <a href="installation.html">download and install the CQ Extended Tag Library</a></li>
+
+<li>Learn how to <a href="usage.html">use the CQ Extended Tag Library</a></li>
+
+<li>Read the <a href="api.html">API for the CQ Extended Tag Library</a></li>
+</ul>
 				</div>
 				<div class="five columns">
 					<h2><a href="http://labs.sixdimensions.com/blog.xml" title="Blog RSS Feed">Follow Our Blog Posts</a></h2>

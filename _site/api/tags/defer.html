@@ -2,9 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>{% if page.title %} {{ page.title }} | {% endif %} {{ site.name }} | 6D Labs</title>
-		{% if page.tags %}<meta content="{{page.tags | join: ', '}}" name="keywords" />{% endif %}
-		{% if page.summary %}<meta content="{{ page.summary }}" name="description" />{% endif %}
+		<title> defer |  CQ Extended Tag Library | 6D Labs</title>
+		
+		<meta content="Defers the writing of HTML until a WriteDeferred tag is evaluated." name="description" />
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
 		<link rel="stylesheet" href="http://labs.sixdimensions.com/css/base.css" />
 		<link rel="stylesheet" href="http://labs.sixdimensions.com/css/skeleton.css" />
@@ -20,7 +20,7 @@
 					<a href="http://www.sixdimensions.com/contact-us">Contact Us</a>
 				</div>
 				<h1>
-					<a href="{{ site.baseurl }}/" id="logo">
+					<a href="/CQ-Extended-Tag-Library/" id="logo">
 						<img width="300" height="84" src="http://labs.sixdimensions.com/images/logo.png" alt="Six Dimensions Labs">
 					</a>
 				</h1>
@@ -28,12 +28,41 @@
 			</div>
 			<div class="three columns sidebar">
 				<div id="nav">
-					{% include nav.html %}
+					<ul class="menu">
+	<li><a href="/CQ-Extended-Tag-Library/">Home</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/usage.html">Usage</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/api.html">API</a></li>
+	<li><a href="/CQ-Extended-Tag-Library/installation.html">Installation</a></li>
+</ul>
 				</div>
 			</div>
 			<div class="seventeen columns main">
 				<div class="eleven columns">
-					{{ content }}
+					<p><a href="http://labs.sixdimensions.com">6D Labs</a> / <a href="/CQ-Extended-Tag-Library/">CQ Extended Tag Library</a> / <a href="/CQ-Extended-Tag-Library/api.html">API</a> / <a href="/CQ-Extended-Tag-Library/api/tags.html">Tags</a> | defer</p>
+
+<h2 id="defer_tag">Defer Tag</h2>
+
+<p>Defers the writing of HTML until a WriteDeferred tag is evaluated. This is useful especially for JavaScript libraries which may be in components on the page, but should be evaluated at the end of the page for performance reasons.</p>
+
+<ul>
+<li><strong>name</strong> - defer</li>
+
+<li><strong>class</strong> - com.sixdimensions.wcm.cq.taglib.ext.DeferTag</li>
+
+<li><strong>attributes</strong>:
+<ul>
+<li><strong>id</strong> - The id of the content block, ensures content is only written once</li>
+</ul>
+</li>
+</ul>
+
+<p>Example:</p>
+
+<pre><code>&lt;ext:defer id=&quot;a-script-block&quot;&gt;
+  &lt;script&gt;
+    alert(&quot;Hello World&quot;);
+  &lt;/script&gt;
+&lt;/ext:defer&gt;</code></pre>
 				</div>
 				<div class="five columns">
 					<h2><a href="http://labs.sixdimensions.com/blog.xml" title="Blog RSS Feed">Follow Our Blog Posts</a></h2>

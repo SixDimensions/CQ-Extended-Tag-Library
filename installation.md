@@ -3,6 +3,8 @@ layout: default
 title: Installation
 ---
 
+[6D Labs](http://labs.sixdimensions.com) / [{{ site.name }}]({{ site.baseurl }}/) / {{ page.title }}
+
 ## Installing CQ Extended Tag Library
  
 The latest version of each bundle can be downloaded from the 
@@ -22,4 +24,4 @@ following dependency into your POM:
         	<version>0.1.0</version>
     	</dependency>
 
-This way, you can easily [embed the bundle into a content package](http://dev.day.com/docs/en/cq/current/core/how_to/how_to_use_the_vlttool/vlt-mavenplugin.html#Embedding OSGi Bundles in a Content%20Package).
+This way, you can easily [embed the bundle into a content package](http://dev.day.com/docs/en/cq/current/core/how_to/how_to_use_the_vlttool/vlt-mavenplugin.html#Embedding%20OSGi%20Bundles%20in%20a%20Content%20Package).
