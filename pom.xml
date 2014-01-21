@@ -8,7 +8,7 @@
 		<version>7</version>
 	</parent>
 
-	<version>0.1.2-SNAPSHOT</version>
+	<version>0.1.2</version>
 	<groupId>com.sixdimensions.wcm.cq</groupId>
 	<artifactId>com.sixdimensions.wcm.cq.taglib.ext</artifactId>
 	<packaging>bundle</packaging>
