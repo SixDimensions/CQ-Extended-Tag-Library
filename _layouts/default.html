@@ -67,6 +67,39 @@
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+			var track = true;
+			try {
+				if (window.location.search == '?track=false') {
+					window.localStorage.setItem('track', 'false');
+					track = false;
+				}
+				if (window.localStorage.getItem('track') == 'false') {
+					track = false;
+				}
+			} catch(e) {
+				// problem occurred with local storage
+			}
+			var _gaq = _gaq || [];
+			if(track){
+				_gaq.push(['_setAccount', '{{ site.ga_account }}']);
+				_gaq.push(['_setDomainName', '{{ site.ga_domain }}']);
+				_gaq.push(['_trackPageview']);
+				(function() {
+					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			}
+			var PageInfo = {
+				title: "{{ page.title }}",
+				url: "{{site.url}}{{page.url | remove: 'index.html' | replace: ' ', '%20' }}",
+				tags: ["{{page.tags | join: '", "'}}"],
+				author: "{{ page.author }}",
+				summary: "{% if page.summary %}{{ page.summary }}{% else %}{{ page.content | strip_html | truncatewords:25}}{% endif %}",
+				layout: "{{ page.layout }}"
+			}
+		</script>
 		<script src="http://labs.sixdimensions.com/js/jquery-1.10.2.min.js"></script>
 		<script src="http://labs.sixdimensions.com/js/google-code-prettify/prettify.js"></script>
 		<script src="http://labs.sixdimensions.com/js/custom.js"></script>		
