@@ -4,7 +4,7 @@ layout: default
 summary: Defers the writing of HTML until a WriteDeferred tag is evaluated.
 ---
 
-[6D Labs](http://labs.sixdimensions.com) / [{{ site.name }}]({{ site.baseurl }}/) / [API]({{ site.baseurl }}/api.html) / [Tags]({{ site.baseurl }}/api/tags.html) | {{ page.title }}
+[6D Labs](http://labs.sixdimensions.com) / [{{ site.name }}]({{ site.baseurl }}/) / [API]({{ site.baseurl }}/api.html) / [Tags]({{ site.baseurl }}/api/tags.html) / {{ page.title }}
 
 ## Defer Tag
 

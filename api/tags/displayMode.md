@@ -4,7 +4,7 @@ layout: default
 summary: Displays or hides the contents of the tag based on the current WCMMode
 ---
 
-[6D Labs](http://labs.sixdimensions.com) / [{{ site.name }}]({{ site.baseurl }}/) / [API]({{ site.baseurl }}/api.html) / [Tags]({{ site.baseurl }}/api/tags.html) | {{ page.title }}
+[6D Labs](http://labs.sixdimensions.com) / [{{ site.name }}]({{ site.baseurl }}/) / [API]({{ site.baseurl }}/api.html) / [Tags]({{ site.baseurl }}/api/tags.html) / {{ page.title }}
 
 ## displayMode Tag
 
