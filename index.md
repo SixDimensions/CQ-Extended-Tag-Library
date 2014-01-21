@@ -19,8 +19,8 @@ Functions.
 
 ### How do I use the tags?
 
-All of the tags use the cqex namespace. For more information on the available tags and 
-functions and how to utilize them, please consult the documentation page.
+All of the tags use the ext namespace. For more information on the available tags and 
+functions and how to utilize them, please consult the [usage page](usage.html).
 
 ### Learn More
 
