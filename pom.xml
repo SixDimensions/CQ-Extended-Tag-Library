@@ -355,6 +355,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.felix</groupId>
+			<artifactId>org.osgi.compendium</artifactId>
+			<version>1.4.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
 			<artifactId>org.apache.felix.scr.annotations</artifactId>
 			<version>1.6.0</version>
 			<scope>provided</scope>
@@ -420,12 +426,6 @@
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.6.4</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.felix</groupId>
-			<artifactId>org.osgi.compendium</artifactId>
-			<version>1.4.0</version>
-			<type>bundle</type>
 		</dependency>
 	</dependencies>
 
