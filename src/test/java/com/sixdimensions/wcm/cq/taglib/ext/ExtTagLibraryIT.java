@@ -205,7 +205,21 @@ public class ExtTagLibraryIT extends SlingTestBase {
 		exec.assertContentContains("Toolbar");
 		exec.assertContentContains("awesome-coolness");
 		exec.assertContentContains("/content/geometrixx/en/toolbar/account/login");
-		log.info("Content created successfully");
+		log.info("Functions tested successfully");
+	}
+
+	/**
+	 * Test the ssi tag
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testSSI() throws Exception {
+		log.info("Asserting ssi works");
+		final RequestExecutor exec = this.initTest("ssi");
+		exec.assertContentContains("Strategic Consulting");
+
+		log.info("SSI tests successful");
 	}
 
 	/**
@@ -224,6 +238,6 @@ public class ExtTagLibraryIT extends SlingTestBase {
 		exec.assertContentContains("&#x22;XML SUX&#x22;");
 		log.info("Content: " + exec.getContent());
 
-		log.info("All asset tests successful");
+		log.info("XSS tests successful");
 	}
 }
