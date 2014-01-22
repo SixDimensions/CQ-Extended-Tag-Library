@@ -1,6 +1,9 @@
 # Name of your blog (this will show up at the top of your page and in the RSS feed)
 name: CQ Extended Tag Library
 
+# A short ID for the site
+id: cq-ext-tld
+
 # Short description (goes below the title; it will also be used in the RSS feed)
 description: Internal stuff
 

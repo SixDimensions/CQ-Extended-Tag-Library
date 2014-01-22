@@ -40,6 +40,8 @@
 			<div class="seventeen columns main">
 				<div class="eleven columns">
 					{{ content }}
+					<div class="cta">
+					</div>
 				</div>
 				<div class="five columns">
 					<h2><a href="http://labs.sixdimensions.com/blog.xml" title="Blog RSS Feed">Follow Our Blog Posts</a></h2>
@@ -92,12 +94,13 @@
 				})();
 			}
 			var PageInfo = {
-				title: "{{ page.title }}",
-				url: "{{site.url}}{{page.url | remove: 'index.html' | replace: ' ', '%20' }}",
-				tags: ["{{page.tags | join: '", "'}}"],
 				author: "{{ page.author }}",
+				layout: "{{ page.layout }}",
+				site: "{{ site.id }}",
 				summary: "{% if page.summary %}{{ page.summary }}{% else %}{{ page.content | strip_html | truncatewords:25}}{% endif %}",
-				layout: "{{ page.layout }}"
+				tags: ["{{page.tags | join: '", "'}}"],
+				title: "{{ page.title }}",
+				url: "{{site.url}}{{page.url | remove: 'index.html' | replace: ' ', '%20' }}"
 			}
 		</script>
 		<script src="http://labs.sixdimensions.com/js/jquery-1.10.2.min.js"></script>
